@@ -5,17 +5,14 @@ import json
 import os.path
 
 
-# fet the data from the GitHub API
+# fetch the data from the GitHub API
 def git_ipython_repos():
     json_data = "https://api.github.com/search/repositories?q=IPython+language:python&sort=stars&order=desc"
     request_data = requests.get(json_data)
 
     repoItem = {}
     if request_data.ok:
-        # print "req content is ", request_data.content
         repoItem = json.loads(request_data.content)
-        # print "repoItem is ", repoItem
-        # print "Git JSON dictionary extracted: ", repoItem['total_count']
 
         if os.path.exists("data_copy.json") is False:
             with open('data_copy.json', 'w') as outfile:
@@ -30,4 +27,18 @@ def get_data_from_file():
         data = json.load(data_file)
     # print "Data is ", data
     return data
-# git_ipython_repos()
+
+
+# get the urls for the GitHub repositories from the dictionary
+def repos_urls(data):
+    dict_items = data["items"]
+    repos_dict = {}
+    for item in dict_items:
+        full_name = item["full_name"]
+        clone_url = item["clone_url"]
+        repos_dict[full_name] = clone_url
+
+    return repos_dict
+
+data = get_data_from_file()
+print repos_urls(data)
