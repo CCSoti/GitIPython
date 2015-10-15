@@ -7,17 +7,17 @@ from git import *
 
 
 # class for getting data from a repository
-class RepositoryInfo():
+class RepositoryWrapper(): # changed
 
     def __init__(self, name, url):
         self.name = name
         self.url = url
         pass
 
-    def get_info(self, name, url):
-        remote_url = url
+    def clone_repos(self): # changes
+        remote_url = self.url # push these changes from the meeting
         temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-        path_project = temp_path + "/" + name
+        path_project = temp_path + "/" + self.name
         print path_project
 
         repo = Repo.init(path_project)

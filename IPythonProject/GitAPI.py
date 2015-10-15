@@ -1,4 +1,4 @@
-from CreateRepo import RepositoryInfo
+from CreateRepo import RepositoryWrapper
 
 __author__ = 'SilviyaSoti'
 
@@ -44,21 +44,21 @@ def repos_urls(data):
 
 
 # get data for only 3 repositories using CreateRepo.py class
-def get_three_repos(repos_dict):
+def clone_repositories(repos_dict, num):
     index = 1
     repos_dict_keys = repos_dict.keys()
-    while index <= 3:
+    while index <= num:
         repo_name = repos_dict_keys[index]
         repo_url = repos_dict[repos_dict_keys[index]]
         index += 1
-        repo_info = RepositoryInfo(repo_name, repo_url)
-        repo_info.get_info(repo_name, repo_url)
+        repo_info = RepositoryWrapper(repo_name, repo_url)
+        repo_info.clone_repos() # changes
 
 
 # main method for calling all the functions we need
 def main():
     data = get_data_from_file()
     repos_dict = repos_urls(data)
-    get_three_repos(repos_dict)
+    clone_repositories(repos_dict, 3)
 
 main()
