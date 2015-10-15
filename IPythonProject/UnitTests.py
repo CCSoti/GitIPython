@@ -5,7 +5,7 @@ __author__ = 'SilviyaSoti'
 import json
 from pprint import pprint
 import unittest
-import GitAPI
+import githubparsing
 
 
 # Unit Tests
@@ -16,7 +16,7 @@ class TestJSONMethods(unittest.TestCase):
     print "Data is ", data
 
     def test_file(self):
-        self.assertDictEqual(self.data, GitAPI.git_ipython_repos())
+        self.assertDictEqual(self.data, githubparsing.git_ipython_repos())
 
     # def test_isupper(self):
     #     self.assertTrue('FOO'.isupper())

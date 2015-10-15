@@ -1,4 +1,4 @@
-from CreateRepo import RepositoryWrapper
+from wrapper import RepositoryWrapper
 
 __author__ = 'SilviyaSoti'
 
@@ -43,7 +43,7 @@ def repos_urls(data):
     return repos_dict
 
 
-# get data for only 3 repositories using CreateRepo.py class
+# get data for only 3 repositories using wrapper.py class
 def clone_repositories(repos_dict, num):
     index = 1
     repos_dict_keys = repos_dict.keys()
