@@ -1,3 +1,5 @@
+from CreateRepo import RepositoryInfo
+
 __author__ = 'SilviyaSoti'
 
 import requests
@@ -40,5 +42,23 @@ def repos_urls(data):
 
     return repos_dict
 
-data = get_data_from_file()
-print repos_urls(data)
+
+# get data for only 3 repositories using CreateRepo.py class
+def get_three_repos(repos_dict):
+    index = 1
+    repos_dict_keys = repos_dict.keys()
+    while index <= 3:
+        repo_name = repos_dict_keys[index]
+        repo_url = repos_dict[repos_dict_keys[index]]
+        index += 1
+        repo_info = RepositoryInfo(repo_name, repo_url)
+        repo_info.get_info(repo_name, repo_url)
+
+
+# main method for calling all the functions we need
+def main():
+    data = get_data_from_file()
+    repos_dict = repos_urls(data)
+    get_three_repos(repos_dict)
+
+main()

@@ -5,17 +5,22 @@ import shutil
 
 from git import *
 
-REMOTE_URL = "https://github.com/ipython/ipython.git"
 
-temp_path = os.path.abspath("IPythonProject")
-print temp_path
-# print temp_path.replace('\\', '/')
-# temp_path = temp_path.replace('\\', '/')
+# class for getting data from a repository
+class RepositoryInfo():
 
-repo = Repo.init("C:/Users/SilviyaSoti/Documents/Level_5/PyCharm/IPythonProject/temp")
-origin = repo.create_remote('origin', REMOTE_URL)
-origin.fetch()
-origin.pull(origin.refs[0].remote_head)
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url
+        pass
 
-print "---- DONE ----"
+    def get_info(self, name, url):
+        remote_url = url
+        temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
+        path_project = temp_path + "/" + name
+        print path_project
 
+        repo = Repo.init(path_project)
+        origin = repo.create_remote('origin', remote_url)
+        origin.fetch()
+        origin.pull(origin.refs[0].remote_head)
