@@ -9,7 +9,7 @@ import os.path
 
 # fetch the data from the GitHub API
 def git_ipython_repos():
-    json_data = "https://api.github.com/search/repositories?q=IPython+language:python&sort=stars&order=desc"
+    json_data = "https://api.github.com/search/repositories?q=IPython" # &page=2
     request_data = requests.get(json_data)
 
     repoItem = {}
@@ -25,7 +25,7 @@ def git_ipython_repos():
 
 # method for fetching the data from the file
 def get_data_from_file():
-    with open('data_copy.json') as data_file:
+    with open('data_copy_pythonlangsearch.json') as data_file:
         data = json.load(data_file)
     # print "Data is ", data
     return data
@@ -62,3 +62,4 @@ def main():
     clone_repositories(repos_dict, 3)
 
 # main()
+# git_ipython_repos()

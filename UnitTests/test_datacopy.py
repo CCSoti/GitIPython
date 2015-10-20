@@ -20,7 +20,7 @@ class TestJSONMethods(unittest.TestCase):
 
     def test_totalcount(self):
         total_count = self.data["total_count"]
-        self.assertEqual(total_count, 1109)
+        self.assertEqual(total_count, 3933)
 
     def test_numberitems(self):
         items = self.data["items"]
