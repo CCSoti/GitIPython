@@ -61,4 +61,4 @@ def main():
     repos_dict = repos_urls(data)
     clone_repositories(repos_dict, 3)
 
-main()
+# main()
