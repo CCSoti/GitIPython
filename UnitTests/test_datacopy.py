@@ -4,9 +4,7 @@ import os
 __author__ = 'SilviyaSoti'
 
 import json
-from pprint import pprint
 import unittest
-from IPythonProject import githubparsing
 
 
 # Unit Tests
@@ -14,7 +12,7 @@ class TestJSONMethods(unittest.TestCase):
 
     # read from json file
     temp_path = os.path.dirname(os.path.realpath("UnitTests"))
-    print "Temp Path: ", temp_path
+    print ("Temp Path: ", temp_path)
     with open(temp_path.replace("UnitTests", "") + '/IPythonProject/data_copy.json') as data_file:
         data = json.load(data_file)
 

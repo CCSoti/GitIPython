@@ -1,10 +1,9 @@
-from wrapper import RepositoryWrapper
-
 __author__ = 'SilviyaSoti'
 
 import requests
 import json
 import os.path
+from IPythonProject.wrapper import RepositoryWrapper
 
 
 # fetch the data from the GitHub API
@@ -14,7 +13,7 @@ def git_ipython_repos():
 
     repoItem = {}
     if request_data.ok:
-        repoItem = json.loads(request_data.content)
+        repoItem = json.loads(request_data.text)
 
         if os.path.exists("data_copy.json") is False:
             with open('data_copy.json', 'w') as outfile:
@@ -62,4 +61,4 @@ def main():
     clone_repositories(repos_dict, 3)
 
 # main()
-# git_ipython_repos()
+git_ipython_repos()

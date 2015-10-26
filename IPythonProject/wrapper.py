@@ -1,8 +1,6 @@
 __author__ = 'SilviyaSoti'
 
 import os
-import shutil
-
 from git import *
 
 
@@ -18,7 +16,7 @@ class RepositoryWrapper():
         remote_url = self.url
         temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
         path_project = temp_path + "/" + self.name
-        print path_project
+        print (path_project)
 
         repo = Repo.init(path_project)
         origin = repo.create_remote('origin', remote_url)
