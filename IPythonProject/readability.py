@@ -11,6 +11,7 @@ class ReadabilityAnalysis():
         self.repo_name = repo_name
         pass
 
+    # extract the text from README.md file if the repository has it
     def extract_text(self):
         repo_path = os.path.dirname(os.getcwd())  # os.path.dirname returns upper directory from current one
         os.chdir(repo_path)
@@ -39,6 +40,74 @@ class ReadabilityAnalysis():
 
         return readme_text
 
+    def syllable_count(self):
+        return
+
+    def lexicon_count(self):
+        return
+
+    def sentence_count(self):
+        return
+
+    """
+    Returns the Flesch Reading Ease Score.
+    Following table is helpful to access the ease of readability in a document:
+
+    90-100 : Very Easy
+    80-89 : Easy
+    70-79 : Fairly Easy
+    60-69 : Standard
+    50-59 : Fairly Difficult
+    30-49 : Difficult
+    0-29 : Very Confusing
+    """
+    def flesch_reading_ease_score(self):
+        return
+
+    """
+    Returns the grade score using the Flesch-Kincaid Grade Formula.
+    For example a score of 9.3 means that a ninth grader would be able to read the document.
+    """
+    def flesch_kincaid_grade_level(self):
+        return
+
+    """
+    Returns the FOG index of the given text.
+    """
+    def fog_scale(self):
+        return
+
+    """
+    Return the SMOG index of the given text.
+    """
+    def smog_index(self):
+        return
+
+    """
+    Returns the ARI(Automated Readability Index) which outputs a number that approximates the grade level needed to comprehend the text.
+    For example if the ARI is 6.5, then the grade level to comprehend the text is 6th to 7th grade.
+    """
+    def automated_index(self):
+        return
+
+    """
+    Returns the grade level of the text using the Coleman-Liau Formula
+    """
+    def coleman_liau_index(self):
+        return
+
+    """
+    Returns the grade level using the Lisear Write Formula.
+    """
+    def linsear_write(self):
+        return
+
+    """
+    Different from other tests, since it uses a lookup table of most commonly used 3000 english words.
+    Thus it returns the grade level using the New Dale-Chall Formula.
+    """
+    def dale_chall_score(self):
+        return
 
 ra = ReadabilityAnalysis("pydata")
 print(ra.extract_text())
