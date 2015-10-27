@@ -1,5 +1,6 @@
 import copy
 import os
+from unittest import TestCase
 
 __author__ = 'SilviyaSoti'
 
@@ -8,7 +9,7 @@ import unittest
 
 
 # Unit Tests
-class TestJSONMethods(unittest.TestCase):
+class TestJSONMethods(TestCase):
 
     # read from json file
     temp_path = os.path.dirname(os.path.realpath("UnitTests"))

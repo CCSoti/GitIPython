@@ -40,13 +40,13 @@ class ReadabilityAnalysis():
 
         return readme_text
 
-    def syllable_count(self):
+    def syllable_number(self):
         return
 
-    def lexicon_count(self):
+    def lexicon_number(self):
         return
 
-    def sentence_count(self):
+    def sentence_number(self):
         return
 
     """
@@ -80,7 +80,7 @@ class ReadabilityAnalysis():
     """
     Return the SMOG index of the given text.
     """
-    def smog_index(self):
+    def smog_analysis(self):
         return
 
     """
@@ -93,7 +93,7 @@ class ReadabilityAnalysis():
     """
     Returns the grade level of the text using the Coleman-Liau Formula
     """
-    def coleman_liau_index(self):
+    def coleman_index(self):
         return
 
     """
@@ -107,6 +107,12 @@ class ReadabilityAnalysis():
     Thus it returns the grade level using the New Dale-Chall Formula.
     """
     def dale_chall_score(self):
+        return
+
+    """
+    Based upon all the above analysis returns the most appropriate grade level under which the given text belongs to.
+    """
+    def consensus_analysis(self):
         return
 
 ra = ReadabilityAnalysis("pydata")
