@@ -1,0 +1,5 @@
+- mathematician - with Python easy transition to coding, on Java was more difficult
+- rude awakining to computing
+
+- begining of a change from MATLAB to Python, but MATLAB still in use from statisticians
+- 
