@@ -41,6 +41,9 @@ class ReadabilityAnalysis():
         return readme_text
 
     def syllable_number(self):
+        readme_text = self.extract_text()
+        for read in readme_text:
+            print(read, "   ", textstat.syllable_count(read))
         return
 
     def lexicon_number(self):
@@ -115,5 +118,6 @@ class ReadabilityAnalysis():
     def consensus_analysis(self):
         return
 
-ra = ReadabilityAnalysis("pydata")
-print(ra.extract_text())
+ra = ReadabilityAnalysis("tarmstrong")
+# print(ra.extract_text())
+ra.syllable_number()
