@@ -6,8 +6,8 @@ __author__ = 'SilviyaSoti'
 
 
 class TestReadabilityAnalysis(TestCase):
-    def test_extract_text(self):
-        self.fail()
+    # def test_extract_text(self):
+    #     self.fail()
 
     def test_syllable_number(self):
         readability_object = ReadabilityAnalysis("tarmstrong")
@@ -27,25 +27,32 @@ class TestReadabilityAnalysis(TestCase):
 
     def test_flesch_kincaid_grade_level(self):
         readability_object = ReadabilityAnalysis("tarmstrong")
-        self.assertEqual("", readability_object.flesch_kincaid_grade_level())
+        self.assertEqual(7.0, readability_object.flesch_kincaid_grade_level())
 
     def test_fog_scale(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(18.100425531914894, readability_object.fog_scale())
 
     def test_smog_analysis(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(10.4, readability_object.smog_analysis())
 
     def test_automated_index(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(13.3, readability_object.automated_index())
 
     def test_coleman_index(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(17.95, readability_object.coleman_index())
 
     def test_linsear_write(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(4.25, readability_object.linsear_write())
 
     def test_dale_chall_score(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(8.97, readability_object.dale_chall_score())
 
     def test_consensus_analysis(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual("8th and 9th grade", readability_object.consensus_analysis())

@@ -90,21 +90,33 @@ class ReadabilityAnalysis():
     """
 
     def flesch_kincaid_grade_level(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.flesch_kincaid_grade(overall_read)
 
     """
     Returns the FOG index of the given text.
     """
 
     def fog_scale(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.gunning_fog(overall_read)
 
     """
     Return the SMOG index of the given text.
     """
 
     def smog_analysis(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.smog_index(overall_read)
 
     """
     Returns the ARI(Automated Readability Index) which outputs a number that approximates the grade level needed to comprehend the text.
@@ -112,21 +124,33 @@ class ReadabilityAnalysis():
     """
 
     def automated_index(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.automated_readability_index(overall_read)
 
     """
     Returns the grade level of the text using the Coleman-Liau Formula
     """
 
     def coleman_index(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.coleman_liau_index(overall_read)
 
     """
     Returns the grade level using the Lisear Write Formula.
     """
 
     def linsear_write(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.linsear_write_formula(overall_read)
 
     """
     Different from other tests, since it uses a lookup table of most commonly used 3000 english words.
@@ -134,14 +158,22 @@ class ReadabilityAnalysis():
     """
 
     def dale_chall_score(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.dale_chall_readability_score(overall_read)
 
     """
     Based upon all the above analysis returns the most appropriate grade level under which the given text belongs to.
     """
 
     def consensus_analysis(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.readability_consensus(overall_read)
 
 
 ra = ReadabilityAnalysis("tarmstrong")
@@ -150,3 +182,12 @@ print(ra.syllable_number())
 print(ra.lexicon_number())
 print(ra.sentence_number())
 print(ra.flesch_reading_ease_score())
+print(ra.flesch_kincaid_grade_level())
+print(ra.fog_scale())
+print(ra.smog_analysis())
+print(ra.automated_index())
+print(ra.coleman_index())
+print(ra.linsear_write())
+print(ra.dale_chall_score())
+print(ra.consensus_analysis())
+
