@@ -1,4 +1,6 @@
+import os
 from unittest import TestCase
+from IPythonProject.readability import ReadabilityAnalysis
 
 __author__ = 'SilviyaSoti'
 
@@ -8,7 +10,8 @@ class TestReadabilityAnalysis(TestCase):
         self.fail()
 
     def test_syllable_number(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(160, readability_object.syllable_number())
 
     def test_lexicon_number(self):
         self.fail()

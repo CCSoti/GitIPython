@@ -14,7 +14,10 @@ class ReadabilityAnalysis():
     # extract the text from README.md file if the repository has it
     def extract_text(self):
         repo_path = os.path.dirname(os.getcwd())  # os.path.dirname returns upper directory from current one
+        if "IPythonProject" in repo_path:
+            repo_path = repo_path.replace("IPythonProject", "")
         os.chdir(repo_path)
+        print(repo_path)
         find_file = repo_path + "\\" + self.repo_name
         os.chdir(find_file)
 
@@ -42,9 +45,10 @@ class ReadabilityAnalysis():
 
     def syllable_number(self):
         readme_text = self.extract_text()
+        overall_num = 0
         for read in readme_text:
-            print(read, "   ", textstat.syllable_count(read))
-        return
+            overall_num = overall_num + textstat.syllable_count(read)
+        return overall_num
 
     def lexicon_number(self):
         return
@@ -64,6 +68,7 @@ class ReadabilityAnalysis():
     30-49 : Difficult
     0-29 : Very Confusing
     """
+
     def flesch_reading_ease_score(self):
         return
 
@@ -71,18 +76,21 @@ class ReadabilityAnalysis():
     Returns the grade score using the Flesch-Kincaid Grade Formula.
     For example a score of 9.3 means that a ninth grader would be able to read the document.
     """
+
     def flesch_kincaid_grade_level(self):
         return
 
     """
     Returns the FOG index of the given text.
     """
+
     def fog_scale(self):
         return
 
     """
     Return the SMOG index of the given text.
     """
+
     def smog_analysis(self):
         return
 
@@ -90,18 +98,21 @@ class ReadabilityAnalysis():
     Returns the ARI(Automated Readability Index) which outputs a number that approximates the grade level needed to comprehend the text.
     For example if the ARI is 6.5, then the grade level to comprehend the text is 6th to 7th grade.
     """
+
     def automated_index(self):
         return
 
     """
     Returns the grade level of the text using the Coleman-Liau Formula
     """
+
     def coleman_index(self):
         return
 
     """
     Returns the grade level using the Lisear Write Formula.
     """
+
     def linsear_write(self):
         return
 
@@ -109,15 +120,18 @@ class ReadabilityAnalysis():
     Different from other tests, since it uses a lookup table of most commonly used 3000 english words.
     Thus it returns the grade level using the New Dale-Chall Formula.
     """
+
     def dale_chall_score(self):
         return
 
     """
     Based upon all the above analysis returns the most appropriate grade level under which the given text belongs to.
     """
+
     def consensus_analysis(self):
         return
 
+
 ra = ReadabilityAnalysis("tarmstrong")
 # print(ra.extract_text())
-ra.syllable_number()
+print(ra.syllable_number())
