@@ -14,16 +14,20 @@ class TestReadabilityAnalysis(TestCase):
         self.assertEqual(160, readability_object.syllable_number())
 
     def test_lexicon_number(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(94, readability_object.lexicon_number())
 
     def test_sentence_number(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(13, readability_object.sentence_number())
 
     def test_flesch_reading_ease_score(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual(61.93, readability_object.flesch_reading_ease_score())
 
     def test_flesch_kincaid_grade_level(self):
-        self.fail()
+        readability_object = ReadabilityAnalysis("tarmstrong")
+        self.assertEqual("", readability_object.flesch_kincaid_grade_level())
 
     def test_fog_scale(self):
         self.fail()

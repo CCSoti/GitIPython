@@ -51,10 +51,18 @@ class ReadabilityAnalysis():
         return overall_num
 
     def lexicon_number(self):
-        return
+        readme_text = self.extract_text()
+        overall_num = 0
+        for read in readme_text:
+            overall_num = overall_num + textstat.lexicon_count(read)
+        return overall_num
 
     def sentence_number(self):
-        return
+        readme_text = self.extract_text()
+        overall_num = 0
+        for read in readme_text:
+            overall_num = overall_num + textstat.sentence_count(read)
+        return overall_num
 
     """
     Returns the Flesch Reading Ease Score.
@@ -70,7 +78,11 @@ class ReadabilityAnalysis():
     """
 
     def flesch_reading_ease_score(self):
-        return
+        readme_text = self.extract_text()
+        overall_read = ""
+        for read in readme_text:
+            overall_read += read
+        return textstat.flesch_reading_ease(overall_read)
 
     """
     Returns the grade score using the Flesch-Kincaid Grade Formula.
@@ -135,3 +147,6 @@ class ReadabilityAnalysis():
 ra = ReadabilityAnalysis("tarmstrong")
 # print(ra.extract_text())
 print(ra.syllable_number())
+print(ra.lexicon_number())
+print(ra.sentence_number())
+print(ra.flesch_reading_ease_score())
