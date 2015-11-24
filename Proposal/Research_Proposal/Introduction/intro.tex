@@ -1,8 +1,58 @@
-briefly explain the context of the project problem
+Creating and writing a research is a challenging process. It is extremely difficult for the author to reach and present unique findings or conclusions. If the analysis for the research have been completed, the scientist has to investigate appropriate arguments and evidence for supporting the ideas which he wants to prove with the research. An effective and well conducted research takes long time to be achieved. Recording all of the findings, ideas and approaches, made during the investigation of the research, is an necessary step for publishing and presenting the analysis. Nonetheless, documenting a project or scientific discovery is challenging and it has to be properly presented to the reader so that it would be understandable. Going thought this process, the analyst might find faults, errors or some unnecessary steps done during investigation, and they be the cause of invalid results. Therefore, scientists have found different forms to report project measurements and practices.\cite{holmes2003reworking}
 
-Creating and writing a research is a challenging process. It is extremely difficult for the author to reach and present unique findings or conclusions. If the analysis for the research have been completed, the scientist has to investigate appropriate arguments and evidence for supporting the ideas which he wants to prove with the research. An effective and well conducted research takes long time to be achieved. Recording all of the findings, ideas and approaches, made during the investigation of the research, is an necessary step for publishing and presenting the analysis. Nonetheless, documenting a project or scientific discovery is challenging and it has to be properly presented to the reader so that it would be understandable. Going thought this process, the analyst might find faults, errors or some unnecessary steps done during investigation, and they be the cause of invalid results. Therefore, scientists have found different forms to report project measurements and practices.
+In the past, the analysis in a scientific research were computed quite slowly with a few number of tests for catching bugs, errors and faulty results. The setting up has also causing issues with the output since the researchers were using various tools for achieving different computations. During the investigation of the research, scientists were cautious to write accurate reports for their ideas, findings and results. The best approach for recording the analyses at that time was handwritten lab notebooks. Researches connected with complex computations, such as finance, mathematics and informatics need a lot of support for maintaining huge amount of code and data, which are used for calculations and experiments. Documenting and recording the results will be of use for comparison of the data quality in future researches and for learning from past mistakes and failures.\cite{guo2012burrito}
 
-\cite{holmes2003reworking}
+-----------------------------------------------------------------------------------------------------------------------
+\begin{itemize}
+
+\item To test hypotheses, they constantly adjust their
+code and re-execute to generate numerous output
+data files. They struggle to remember which exact
+changes to their code generated a particular output
+
+\item They consult a myriad of resources such as documentation
+web pages, PDFs of related papers, code
+snippets, and hand-drawn sketches while they work,
+so they struggle to remember which resources influenced
+them to make specific edits to their code.
+
+\item They struggle to maintain up-to-date notes on which
+experimental trials worked and did not work. Since
+they rapidly edit code, tune execution parameters,
+and generate new variants of output data, notes
+taken only a few hours ago might be outdated.
+
+\item correct calculations for scientific computing.
+Scientists and engineers develop computer programs, application software, that model systems being studied and run these programs with various sets of input parameters. In some cases, these models require massive amounts of calculations
+\end{itemize}
+
+
+Researchers cope with the above problems by taking
+notes using a mix of plain-text files, “sticky notes” widgets,
+and notebook software such as Microsoft OneNote.
+The fundamental shortcoming of all existing electronic
+notetaking solutions is that they are not linked with the
+user’s activity context, which we define as the user’s actions
+at a particular time, such as editing code, reading
+documentation, and executing commands. Instead,
+these tools are simply digital versions of paper lab notebooks.
+As a result, researchers have trouble organizing
+their notes and associating them with the proper context.
+These observations highlight the need for an electronic
+lab notebook that keeps up with the fast pace of computational
+research rather than mimicking paper notebooks.
+
+Scientific research has become pervasively computational. In addition to experiment and theory, the notions of simulation and data-intensive discovery have emerged as third and fourth pillars of science [5]. Today, even theory and experiment are computational, as virtually all experimental work requires computing (whether in data collection, pre-processing or analysis) and most theoretical work requires symbolic and numerical support to develop and refine models. Scanning the pages of any major scientific journal, one is hard-pressed to find a publication in any discipline that doesn't depend on computing for its findings.
+
+Based on our experience over the last decade as practicing researchers, educators and software developers, we propose an integrated approach to computing where the entire life-cycle of scientific research is considered, from the initial exploration of ideas and data to the presentation of final results. Briefly, this life-cycle can be broken down into the following phases:
+ Individual exploration: a single investigator tests an idea, algorithm or question, likely with a small-scale test data set or simulation.
+ Collaboration: if the initial exploration appears promising, more often than not some kind of collaborative effort ensues.
+ Production-scale execution: large data sets and complex simulations often require the use of clusters, supercomputers or cloud resources in parallel.
+ Publication: whether as a paper or an internal report for discussion with colleagues, results need to be presented to others in a coherent form.
+ Education: ultimately, research results become part of the corpus of a discipline that is shared with students and colleagues, thus seeding the next cycle of research.
+In this project, we tackle the following problem. There are no software tools capable of spanning the entire lifecycle of computational research. The result is that researchers are forced to use a large number of disjoint software tools in each of these phases in an awkward workflow that hinders collaboration and reduces efficiency, quality, robustness and reproducibility.But what if months later the researcher realizes there is a problem with the results? What are the chances they will be able to know what buttons they clicked, to reproduce the workflow that can generate the updated plots, manuscript and presentation? What are the chances that other researchers or students could reproduce these steps to learn the new method or understand how the result was obtained? How can reviewers validate that the programs and overall workflow are free of errors? Even if the researcher successfully documents each program and the entire workflow, they have to carry an immense cognitive burden just to keep track of everything.
+
+
 
 Designed to make data analysis easier to share and reproduce, the IPython notebook is being used increasingly by scientists who want to keep detailed records of their work, devise teaching modules and collaborate with others. Some researchers are even publishing the notebooks to back up their research papers — and Brown, among others,is pushing to use the program as a new form of interactive science publishing. \cite{shen2014interactive}
 
@@ -18,42 +68,6 @@ language that the notebook is based on. (Pérez,
 Granger and their colleagues are now moving
 the notebook into a project called Jupyter, which
 aims to make IPython more compatible with
-other languages, including Julia and R).
+other languages, including Julia and R). \cite{perez2013open}
 
-Applications similar to the IPython notebook
-already exist for various programming
-languages. Mathematica and Maple — commercial
-analysis packages popular among mathematicians
-— include notebooks or notebook-like
-programs. MATLAB, a commercial package
-used heavily in signal processing, engineering
-and medical-imaging research, also supports a
-notebook application. Each of these notebooks
-is specialized for its corresponding proprietary
-programming language.
-A number of notebooks and notebook-like
-programs exist in the open-source world; knitr
-works with the R coding language, which is
-especially powerful for statistical analysis. And
-the Sage mathematical software system, which
-is also based on the Python language, supports
-its own notebook. Dexy is a notebook-like program
-that focuses on helping users to generate
-papers and presentations that incorporate prose,
-code, figures and other media.
-But the IPython notebook has become one
-of the most widely adopted programs of its
-kind, says Ana Nelson, the creator of Dexy. “So
-many people have heard of it who haven’t heard
-of any other tool,” she says. Granger and Pérez
-do not know how many people have tried their
-software, but say that traffic to the website suggests
-that roughly 500,000–1.5 million people
-actively use the program. Nelson says that it is
-the best-designed of the digital notebooks, and
-attracts many users because it is free and open
-source. The application also benefits from the
-popularity of the Python language, which boasts
-a robust scientific community that meets for an
-annual international conference, and is (relatively)
-easy for novice.
+We propose that the open source IPython project [9] offers a solution to these problems; a single software tool capable of spanning the entire life-cycle of computational research. Amongst high-level open source programming languages, Python is today the leading tool for general-purpose source scientific computing (along with R for statistics), finding wide adoption across research disciplines, education and industry 
