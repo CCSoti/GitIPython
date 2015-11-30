@@ -18,38 +18,27 @@ There a various ways to handle problems like the ones mentioned above. Scientist
 
 One of the most crucial task in researches is to test how much the collected information is correct and accurate, which can be done with numerical analysis. Nowadays, computational experiments have been done in projects - e.g. software development needs computational analysis by evaluating a prototype on a specific number of users or modelling relations between data items. Theoretical work requires symbolic and numerical support as well - e.g. how much of the sources were able to prove a specific concept. Almost every scientific paper is finding an effective usage of computer science applications.
 
-For many years researchers has tried to gather data in the fastest, most effective and most structured approach. As the boost of software tools usage in scientific researches, investigators are creating more and more numerical analysis and are able to clearly and efficiently organise their notes. Here is one suggested course of actions given by \cite{}.
+For many years researchers has tried to gather data in the fastest, most effective and most structured approach. As the boost of software tools usage in scientific researches, investigators are creating more and more numerical analysis and are able to clearly and efficiently organise their notes. Here is one suggested course of actions given by \textit{"An Open Source Framework For Interactive, Collaborative And Reproducible Scientific Computing And Education"}. \cite{perez2013open}.
 
+\paragraph{Phases:}\cite{perez2013open}
 \begin{enumerate}
-\item Individual exploration: a single investigator tests an idea, algorithm or question, likely with a small-scale test data set or simulation.
-\item Collaboration: if the initial exploration appears promising, more often than not some kind of collaborative effort ensues.
-\item Production-scale execution: large data sets and complex simulations often require the use of clusters, supercomputers or cloud resources in parallel.
-\item Publication: whether as a paper or an internal report for discussion with colleagues, results need to be presented to others in a coherent form.
-\item Education: ultimately, research results become part of the corpus of a discipline that is shared with students and colleagues, thus seeding the next cycle of research.
+\item Individual exploration - testing ideas, questions or algorithms for a test data set.
+
+\item Collaboration - if the hypothesis appears to be effective, then the investigators finds others collaborators to expand the research.
+
+\item Production-scale execution - manipulating and managing big data domains on clusters, supercomputers or cloud computing software.
+
+\item Publication - results that are presented to colleagues or researchers in the same field of study.
+
+\item Education - continuing the research as part of a teaching program or in a process of more unique results and findings.
+ 
 \end{enumerate}
 
- 
- 
- Publication: whether as a paper or an internal report for discussion with colleagues, results need to be presented to others in a coherent form.
- Education: ultimately, research results become part of the corpus of a discipline that is shared with students and colleagues, thus seeding the next cycle of research.
-In this project, we tackle the following problem. There are no software tools capable of spanning the entire lifecycle of computational research. The result is that researchers are forced to use a large number of disjoint software tools in each of these phases in an awkward workflow that hinders collaboration and reduces efficiency, quality, robustness and reproducibility.But what if months later the researcher realizes there is a problem with the results? What are the chances they will be able to know what buttons they clicked, to reproduce the workflow that can generate the updated plots, manuscript and presentation? What are the chances that other researchers or students could reproduce these steps to learn the new method or understand how the result was obtained? How can reviewers validate that the programs and overall workflow are free of errors? Even if the researcher successfully documents each program and the entire workflow, they have to carry an immense cognitive burden just to keep track of everything.
+The life-cycle of the scientific research can not be traversed with only one software tool. Investigators are using a large number of applications that are supporting each of the phases of the analysis. As a consequence, issues are rising - reduced quality, reproducibility and robustness. The scientists are unable to reuse and maintain the code - the same computational analysis might be useful in some other researches and, also, software changes rapidly and needs constant updates. Testing if the results are correct includes testing of all the pieces of code created for the project. Keeping track of the data quality and accuracy requires well structured and written documentation, which is flawless in describing the entire project's workflow. 
 
+Researchers have found a software tool that helps with the analysis over data quality, share and reproducing - IPython notebook. The application is effective in teaching, collaboration with others, combining text and code and recording notes. IPython has been established by scientists as an interactive tool for journals and support for keeping track of thoughts and ideas. In the research \textit{Interactive notebooks: Sharing the code} by \textit{Helen Shen}, IPython has been described to have an \textit{"easy interface"} and it is creating better communication between collaborators.\cite{shen2014interactive}
 
+Python has become powerful tool in the field of scientific computing. Software developers are creating a wide range of Python libraries for easier and cleaner programming. Through IPython notebook, coders are able to express their ideas by combining code and text at the same time. The interactive IPython command window support users to run code, access variables and data sets, view graphs and charts.\cite{perez2013open}
 
-Designed to make data analysis easier to share and reproduce, the IPython notebook is being used increasingly by scientists who want to keep detailed records of their work, devise teaching modules and collaborate with others. Some researchers are even publishing the notebooks to back up their research papers — and Brown, among others,is pushing to use the program as a new form of interactive science publishing. \cite{shen2014interactive}
+To sum up, the open source IPython project presents a solution to several issues encountered in researches and it is a single software tool enabling the spanning of the entire life-cycle of computational analysis. 
 
-The IPython notebook addresses both issues
-by helping scientists to keep track of their work,
-and by making it easy to share and for others
-to explore the code. The ‘I’ in IPython refers to
-an ‘interactive’ command window that helps
-users to run code, access variables, call up data
-analysis packages and view plots, while the
-Python refers to the popular programming
-language that the notebook is based on. (Pérez,
-Granger and their colleagues are now moving
-the notebook into a project called Jupyter, which
-aims to make IPython more compatible with
-other languages, including Julia and R). \cite{perez2013open}
-
-We propose that the open source IPython project [9] offers a solution to these problems; a single software tool capable of spanning the entire life-cycle of computational research. Amongst high-level open source programming languages, Python is today the leading tool for general-purpose source scientific computing (along with R for statistics), finding wide adoption across research disciplines, education and industry 
