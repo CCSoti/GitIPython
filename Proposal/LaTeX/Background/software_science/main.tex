@@ -10,7 +10,7 @@ Software has contributed to a lot of areas of study.
 
 A great deal of researches and journals have been conducted for answering the above questions, which later led to to the idea of observing these investigations in order to assess broadly if software is worth practicing. 
 
-One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer}\cite{packard1986lattice} The model represents the surface into cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
+One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer} \cite{packard1986lattice} The model represents the surface into cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
 
 \begin{figure}[h]
 \centering
@@ -19,66 +19,30 @@ One example for scientifically modeling natural phenomena is the formulation of 
 \label{fig:snowflake}
 \end{figure}
 
+Recording the changes of data in time is crucial for a lot of researches, such as animal tracking data - it gives us information about how individuals and populations migrate from local area, travel across oceans and continents, and develop during centuries. All of this knowledge gain from the analysis, can be a valuable tool for predicting climate changes, biodiversity loss, invasive species, diseases or even important events in the economics. \cite{coyne2005satellite}
+
+Coyne and Godley's paper \cite{coyne2005satellite} presents details about satellite tracking and analysis tool, called STAT. Up until now, Argos systems have been used for recording animal data - \textit{"satellite-based system which collects, processes and disseminates environmental data from fixed and mobile platforms worldwide"}.\cite{argosWiki} Its collected data has a lot of advantages and benefits for journals, but it is not easy to analyze and manipulate by biologists - various of technical skills are required to operate with the given information. The research is demonstrating the STAT system, explaining all of its features - overview of the system, how it handles data management, data filtering and editing, integration of environmental data, and how it influences the education and the public. It is freely available software specifically created for animal tracking biologists in order for them to easily manage, investigate and integrate data. 
+
+Software has an important role in predictions of real life information, such as climate change, automation of systems and artificial intelligence. \cite{easterbrook2009engineering}\cite{chasmSoftware} Huge and complex simulations are computed by researchers who have little software skills and are not adapting to new technology fast. A case of such project can be considered for climate scientists - the paper of Steve Easterbrook and Timothy Johns \cite{easterbrook2009engineering} is illustrating an ethnographic study of the usage and management of software tools by climate analysts. The research has been conducted at the Met Office Hadley Centre, which 
+is one of the UK's most crucial climate change research centres and it produces essential information for climate changes and science. \cite{metOffice} Steve Easterbrook and Timothy Johns \cite{easterbrook2009engineering} are analysing how scientists are applying the technology in terms of software quality, correctness, managing tasks, testing and collaboration. 
+
+The approach taken in this research consisted of eight-week observational study at the
+Met Office Hadley Centre constructed by ethnographic techniques. In order to determine methods and performances of the climate scientists, investigators have discovered several fundamental properties of assessing the usage of software in the centre:\cite{easterbrook2009engineering}
+
+\begin{itemize}
+\item Correctness - how and what does it mean to the scientists? 
+\item Reproducibility - of experiments and code. 
+\item Shared Understanding - representation and knowledge of the large system. 
+\item Prioritization - of requirements and tasks, which of them are achievable or worth implementing for the research. 
+\item Debugging - catching of errors, failures and bugs.
+\end{itemize}
+
+The reported findings presents a greatly developed and integrated techniques of the climate researchers for maintenance and management of the system and their courses of actions to scientific analysis. The Met Office Center's team are applying software methods, such as the agile approach, and are using communication channels. Software engineering practices are proved to be of an essential support for conducting a scientific research. 
+
+Furthermore, the paper introduces the modeling that has been used for basic climate computational analysis - General Circulation Models (GCMs), \textit{"which represent the atmosphere and oceans using a 3-dimensional grid and solve the equations for fluid motion to calculate energy transfer between grid points"}. \cite{easterbrook2009engineering} The reader needs to be aware of the complexity of generating and operating climate data. 
+
 -----------------------------------------------------------------------------------------
 
-Tracking the changes of data in time is crucial for
-Animal tracking data helps us understand how individuals and populations move within local areas, migrate across oceans and continents, and evolve through millennia. This information is being used to address environmental challenges such as climate and land use change, biodiversity loss, invasive species, and the spread of infectious diseases.
-
-Despite the obvious power and advantages
-of the Argos system to track animals by satellite,
-the data generated are difficult for many biologists to
-exploit. A broad range of skills is required to efficiently
-download, collate, filter and interpret Argos data. Integration
-of animal movements with other physical (e.g.
-remote sensing imagery) and anthropogenic (e.g. fishery
-distributions) datasets presents additional technical
-and computing challenges. The Satellite Tracking and
-Analysis Tool (STAT) is a freely available system designed
-for biologists who work on animal tracking; it
-includes a set of standardized tools and techniques for
-data management, analysis, and integration with environmental
-data.\cite{coyne2005satellite}
------------------------------------------------------------------------------------------------
-
-Software has an important role in predictions of real life information, such as climate change, automation of systems and artificial intelligence. \cite{easterbrook2009engineering}\cite{chasmSoftware} 
-
------------------------------------------------------------------------------------------
-
-Climate scientists build large, complex simulations with
-little or no software engineering training, and do not readily
-adopt the latest software engineering tools and techniques.
-In this paper, we describe an ethnographic study
-of the culture and practices of climate scientists at the Met
-Office Hadley Centre. The study examined how the scientists
-think about software correctness, how they prioritize
-requirements, and how they develop a shared understanding
-of their models. The findings show that climate scientists
-have developed customized techniques for verification
-and validation that are tightly integrated into their approach
-to scientific research. Their software practices share
-many features of both agile and open source projects, in that
-they rely on self-organisation of the teams, extensive use of
-informal communication channels, and developers who are
-also users and domain experts. These comparisons offer
-insights into why such practices work.
-\textbf{Their approach:} We conducted an eight-week observational study at the
-Met Office Hadley Centre, using ethnographic techniques to
-identify the concepts and work practices used by the climate
-scientists, and to understand their perspectives. We began the study with five key research questions:
-• Correctness: How do scientists assess correctness of
-their code? What does correctness mean to them?
-• Reproducibility: How do scientists ensure experiments
-can be reproduced (e.g. for peer review)?
-• Shared Understanding: How do scientists develop and
-maintain a shared understanding of the large complex
-codes they use? E.g. what forms of external representation
-do they use when talking about their models?
-• Prioritization How do scientists prioritize their requirements?
-For example, how do they balance between
-doing what is computationally feasible and what
-is scientifically interesting?
-• Debugging: How do scientists detect (and/or prevent)
-errors in the software?
 - \textbf{Basics of Climate Modeling} - Climate scientists use a range of different types of computational model in their research. The most sophisticated
 are General Circulation Models (GCMs), which represent the atmosphere and oceans using a 3-dimensional grid, and
 solve the equations for fluid motion to calculate energy
@@ -103,7 +67,9 @@ as a basis for this validation. Climate models have a sound
 physical basis and mature, domain-specific software development
 processes
 
+-------------------------------------------------------------------------------------------------------
 
+To sum up, this section is presenting three main features of software usage in science - can be applied in algorithms and numerical analysis, tracking and recording of data quality and visualizations, predicting future data. There are three examples of the approaches of other people. 
 
 % more examples - 1 or 2 maybe.
 % that were positive examples for the usage of software in science
@@ -112,5 +78,48 @@ processes
 
 \subsection*{Methodology and Outcomes}
 
-This section explains how we are assessing the usage of software given all of its history in science.
+% maybe use the scientific method stuff for here, to say - that is an example of how I can approach the assessing of a specific software in science.
+
+
+The above journals are great examples for illustrating the usage of software in science. From the made observing approaches we can derive common properties that each investigator is trying to cover so that a final conclusion can be reached - properties connected with the scientific method. 
+
+---------------------------------------------------------------------------------------
+
+Despite the acknowledged benefits, growing dependence on software raises questions
+as to its appropriate role as a tool within the scientific method. Empirical science
+is characterised by Popper [2005] as the proposition of hypotheses concerning some
+aspect of the world. An experimental design is then developed and implemented which
+seeks to test this hypothesis. If the results of the experiment contradict the hypothesis,
+then it is rejected and alternative explanations are sought. Hypotheses that are
+confirmed by repeated experimentation gradually gain acceptance within the scientific
+community. These hypotheses may eventually be referred to as theories. Empirical science
+therefore progresses through the falsification of invalid hypotheses, rather than
+the confirmation of valid ones.
+
+
+-Scientific theories should be falsifiable through experimental contradiction by example.
+It must be possible to use the hypothesis to make predictions about the result of
+an experiment that, when contradicted, demonstrate that the hypothesis was incorrect.
+—Experiments should be repeatable. In practice, repeatability is achieved by thorough
+documentation of the procedure followed and the tools employed in the experiment,
+enabling an experimenter to demonstrate the scientific result on demand.
+—The results of an experiment should be reproducible by an independent experimenter.
+The individual should be able to follow the experimental procedures employed, using
+equivalent tools to recreate the same results. If independent experimenters fail
+to reproduce the results then this should cast doubt on the validity of the original
+hypothesis.
+—The limitations as to the validity of the results of an experiment and any consequent
+conclusions due to the method employed are made explicit in an experimental report.
+
+
+We have to consider the above properties so that we won't have downsides in the impleneted software.
+
+Although a number of approaches have been taken to quality prediction for software, none have
+achieved widespread applicability. This paper describes a single model to combine the diverse forms
+of, often causal, evidence available in software development in a more natural and efficient way than
+done previously. We use Bayesian Networks as the appropriate formalism for representing defect
+introduction, detection and removal processes throughout any life-cycle. \cite{neil2005improved}
+
+-----------------------------------------------------------------------------------------
+
 
