@@ -5,12 +5,28 @@
 To clearly understand the problem that this project is trying to solve, we have to go into detail about the concept of using computational applications. The central hypothesis of the research is to analyse over the usage of software in science. However, this area of study wraps great deal of use cases - it can not be measured with general algorithms. A lot of journals and projects that are using coding, would be the evidence and solution of the raised questions - is software helpful for science?; why do we have to use software in analysis?; how a completely different area of study can benefit from the usage of programming scripts? 
 
 \subsection*{Contributions and Approaches}
-
-Software has contributed to a lot of areas of study.
+\label{sec:contributions}
 
 A great deal of researches and journals have been conducted for answering the above questions, which later led to to the idea of observing these investigations in order to assess broadly if software is worth practicing. 
 
-One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer} \cite{packard1986lattice} The model represents the surface into cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
+------------------------------------------------------------------------------------------------
+
+Science has traditionally been divided into experimental and theoretical disciplines, but during the last
+several decades computing has emerged as a very important part of science. Scientific computing is often
+closely related to theory, but it also has many characteristics in common with experimental work. It is
+therefore often viewed as a new third branch of science. In most fields of science, computational work is an
+important complement to both experiments and theory, and nowadays a vast majority of both experimental
+and theoretical papers involve some numerical calculations, simulations or computer modeling.
+
+In computational sciences there are not yet any well established guidelines for how source code and
+generated data should be handled. For example, it is relatively rare that source code used in simulations for
+published papers are provided to readers, in contrast to the open nature of experimental and theoretical work.
+And it is not uncommon that source code for simulation software is withheld and considered a competitive
+advantage (or unnecessary to publish).\cite{johansson2014introduction}
+
+-------------------------------------------------------------------------------------------------
+
+One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer}\cite{packard1986lattice} The model represents the surface into cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
 
 \begin{figure}[h]
 \centering
@@ -37,89 +53,54 @@ Met Office Hadley Centre constructed by ethnographic techniques. In order to det
 \item Debugging - catching of errors, failures and bugs.
 \end{itemize}
 
-The reported findings presents a greatly developed and integrated techniques of the climate researchers for maintenance and management of the system and their courses of actions to scientific analysis. The Met Office Center's team are applying software methods, such as the agile approach, and are using communication channels. Software engineering practices are proved to be of an essential support for conducting a scientific research. 
+Furthermore, the paper introduces the modeling that has been used for basic climate computational analysis - General Circulation Models (GCMs), \textit{"which represent the atmosphere and oceans using a 3-dimensional grid and solve the equations for fluid motion to calculate energy transfer between grid points"}. \cite{easterbrook2009engineering} The reader needs to be aware of the complexity of generating and operating climate data in order to understand the value of using software in science. The models require great computer power so they can be analysed and visualised.
 
-Furthermore, the paper introduces the modeling that has been used for basic climate computational analysis - General Circulation Models (GCMs), \textit{"which represent the atmosphere and oceans using a 3-dimensional grid and solve the equations for fluid motion to calculate energy transfer between grid points"}. \cite{easterbrook2009engineering} The reader needs to be aware of the complexity of generating and operating climate data. 
+The reported findings presents greatly developed and integrated techniques of the climate researchers for maintenance and management of the system and their courses of actions to scientific analysis. The Met Office Center's team are applying software methods, such as the agile approach, and are using communication channels. Software engineering practices are proved to be of an essential support for conducting a scientific research. Moreover, the Met Office has maintained a software that is greatly accustomed to the data domain that the climate scientists have collected. Issues, such as performance and portability are tested ensuring that the software tools are correctly coordinated with the researchers' practices. The study is observing that these procedures are frequently took as a controlled experiments. Also, the field of climate science has invested in technology for efficient and accurate exploration of data, which is an indication that scientists have recognised what benefits can software tools give them. \cite{easterbrook2009engineering}
 
------------------------------------------------------------------------------------------
-
-- \textbf{Basics of Climate Modeling} - Climate scientists use a range of different types of computational model in their research. The most sophisticated
-are General Circulation Models (GCMs), which represent the atmosphere and oceans using a 3-dimensional grid, and
-solve the equations for fluid motion to calculate energy
-transfer between grid points. Such models can be run at
-different resolutions, depending on the available computing
-power.
-\textbf{Findings} - The software has a
-very long lifetime, is written in an “old” programming language
-(Fortran), and performance issues are carefully balanced
-with maintainability and portability concerns. The Met Office has evolved a software development process
-that is highly adapted to its needs, which relies heavily
-on the deep domain knowledge of the scientists building the
-software, and is tightly integrated with their scientific research
-practices. Our study indicates that for climate science,
-at least as practiced at the Met Office, such model validation
-is routinely performed, as it is built into a systematic
-integration and regression testing process, with each model
-run set up as a controlled experiment. Furthermore, climate
-science as a field has invested in extensive systems for
-collection and calibration of observational data to be used
-as a basis for this validation. Climate models have a sound
-physical basis and mature, domain-specific software development
-processes
-
--------------------------------------------------------------------------------------------------------
-
-To sum up, this section is presenting three main features of software usage in science - can be applied in algorithms and numerical analysis, tracking and recording of data quality and visualizations, predicting future data. There are three examples of the approaches of other people. 
-
-% more examples - 1 or 2 maybe.
-% that were positive examples for the usage of software in science
-% after that, explain the problems - chasm 
-% give examples maybe
+To sum up, this section is presenting three main features of software usage in science - it can be applied in algorithms and numerical analysis, tracking and recording of data quality and visualizations, and predicting future data. Each of them has presented a description of the conducted researches, approach and outcomes. Software is helpful and effective tool for reaching a successful analysis and unique findings. However, with the powerful applications, comes great responsibility. Maintaining, controlling, debugging and documenting software is a challenging, but necessary task for achieving outstanding results. 
 
 \subsection*{Methodology and Outcomes}
 
-% maybe use the scientific method stuff for here, to say - that is an example of how I can approach the assessing of a specific software in science.
+This section is showing how the \textit{"IPython Observatory"} paper is assessing the application of software in various scientific journals. It starts with explaining the fundamental theory behind the issues that might appeared when using software in researches, and it continues with example journals.
 
+The above journals are great examples for illustrating the support that computing can give to analysts when exploring a specific field of study. From the made observing approaches we can derive common properties that each investigator is trying to cover so that a final conclusion can be reached - properties connected with the scientific method, which is \textit{"a body of techniques for investigating phenomena, acquiring new knowledge, or correcting and integrating previous knowledge."}\cite{sciMethod} In the \textit{Steve Easterbrook and Timothy Johns's} paper   the approach is evaluating five main features - correctness, reproducibility, shared understanding, prioritization and debugging.\cite{easterbrook2009engineering} Every scientists is considering these properties since issues has to be avoid. Nevertheless, they are not the only one that need detailed attention - the process of the scientific method includes steps that require examination, as well, so that there are no downsides of the implemented software:\cite{sciMethod}\cite{chasmSoftware}
 
-The above journals are great examples for illustrating the usage of software in science. From the made observing approaches we can derive common properties that each investigator is trying to cover so that a final conclusion can be reached - properties connected with the scientific method. 
+\begin{enumerate}
+\item Formulation of a question - gathering and assessing evidence from experiments, observations and related work of other researchers.
 
----------------------------------------------------------------------------------------
+\item Hypothesis - derived from the knowledge that the investigator has about the area of study. An important aspect of the hypothesis is that it has to be falsifiable, which means that it has to lead to predictions of the results that can be experimentally contradicted. 
 
-Despite the acknowledged benefits, growing dependence on software raises questions
-as to its appropriate role as a tool within the scientific method. Empirical science
-is characterised by Popper [2005] as the proposition of hypotheses concerning some
-aspect of the world. An experimental design is then developed and implemented which
-seeks to test this hypothesis. If the results of the experiment contradict the hypothesis,
-then it is rejected and alternative explanations are sought. Hypotheses that are
-confirmed by repeated experimentation gradually gain acceptance within the scientific
-community. These hypotheses may eventually be referred to as theories. Empirical science
-therefore progresses through the falsification of invalid hypotheses, rather than
-the confirmation of valid ones.
+\item Prediction - determined from the hypothesis. It has to contain logical consequences and be eligible for testing.
 
+\item Testing - hypothesis has to be assessed with a lot of experiments. The experiments has to determine if the made inspections of the real world support or contradict the predictions derived from a hypothesis. Also, the tests must be repeatable, which can be ac hived by well organised documentations and recordings. It is helping with the effective presentation of the hypothesis and the software usage.
 
--Scientific theories should be falsifiable through experimental contradiction by example.
-It must be possible to use the hypothesis to make predictions about the result of
-an experiment that, when contradicted, demonstrate that the hypothesis was incorrect.
-—Experiments should be repeatable. In practice, repeatability is achieved by thorough
-documentation of the procedure followed and the tools employed in the experiment,
-enabling an experimenter to demonstrate the scientific result on demand.
-—The results of an experiment should be reproducible by an independent experimenter.
-The individual should be able to follow the experimental procedures employed, using
-equivalent tools to recreate the same results. If independent experimenters fail
-to reproduce the results then this should cast doubt on the validity of the original
-hypothesis.
-—The limitations as to the validity of the results of an experiment and any consequent
-conclusions due to the method employed are made explicit in an experimental report.
+\item Analysis - includes analysis over the results of the experiment and decision making for the next operation of the research. The predictions of the hypothesis are compared to those of the null hypothesis, so that it can be established which is better for describing the data. The results have to reproducible by an independent experiment and scientists need to be aware of how they are going to accomplish that. The software tools supports the recreation of the same results and the statistical analysis of the data. If the reproducibility feature is not met, there will be a lot concerns about the validity of the hypothesis. From this, we can derive one more aspect that scientists try to accomplish - clearly identifying the limitations of the results.
 
+\end{enumerate}
 
-We have to consider the above properties so that we won't have downsides in the impleneted software.
+An example of a software defect in scientific analysis is given with the Sanders and Kelly's paper - \textit{"Dealing with Risk in Scientific Software Development"}. \cite{sanders2008dealing}. It is reported that one of evaluators was reporting results that are completely different outcome of what the software was meant to do. They have several papers, such as \textit{Assessing the Quality of Scientific Software} and \textit{Five Recommended Practices
+for Computational Scientists Who Write Software}, which are focusing on the usage of software and the necessity of testing it so that the results will be accurate. \cite{kellyassessing}\cite{kelly2009five} 
 
-Although a number of approaches have been taken to quality prediction for software, none have
-achieved widespread applicability. This paper describes a single model to combine the diverse forms
-of, often causal, evidence available in software development in a more natural and efficient way than
-done previously. We use Bayesian Networks as the appropriate formalism for representing defect
-introduction, detection and removal processes throughout any life-cycle. \cite{neil2005improved}
+-----------------------------------------------------------------------------------------------------------------
 
------------------------------------------------------------------------------------------
+Replication and reproducibility are two of the cornerstones in the scientific method. With respect to numerical work, complying with these concepts have the following practical implications:
+• Replication: An author of a scientific paper that involves numerical calculations should be able to
+rerun the simulations and replicate the results upon request. Other scientist should also be able to
+perform the same calculations and obtain the same results, given the information about the methods
+used in a publication.
+• Reproducibility: The results obtained from numerical simulations should be reproducible with an
+independent implementation of the method, or using a different method altogether.
+In summary: A sound scientific result should be reproducible, and a sound scientific study should be
+replicable.
+To achieve these goals, we need to:
+• Keep and take note of exactly which source code and version that was used to produce data and figures
+in published papers.
+• Record information of which version of external software that was used. Keep access to the environment
+that was used.
+• Make sure that old codes and notes are backed up and kept for future reference.
+• Be ready to give additional information about the methods used, and perhaps also the simulation
+codes, to an interested reader who requests it (even years after the paper was published!).
+• Ideally codes should be published online, to make it easier for other scientists interested in the codes
+to access it. \cite{johansson2014introduction}
 
-
+-----------------------------------------------------------------------------------------------------------------
