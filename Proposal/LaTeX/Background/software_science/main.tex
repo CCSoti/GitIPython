@@ -9,23 +9,6 @@ To clearly understand the problem that this project is trying to solve, we have 
 
 A great deal of researches and journals have been conducted for answering the above questions, which later led to to the idea of observing these investigations in order to assess broadly if software is worth practicing. 
 
-------------------------------------------------------------------------------------------------
-
-Science has traditionally been divided into experimental and theoretical disciplines, but during the last
-several decades computing has emerged as a very important part of science. Scientific computing is often
-closely related to theory, but it also has many characteristics in common with experimental work. It is
-therefore often viewed as a new third branch of science. In most fields of science, computational work is an
-important complement to both experiments and theory, and nowadays a vast majority of both experimental
-and theoretical papers involve some numerical calculations, simulations or computer modeling.
-
-In computational sciences there are not yet any well established guidelines for how source code and
-generated data should be handled. For example, it is relatively rare that source code used in simulations for
-published papers are provided to readers, in contrast to the open nature of experimental and theoretical work.
-And it is not uncommon that source code for simulation software is withheld and considered a competitive
-advantage (or unnecessary to publish).\cite{johansson2014introduction}
-
--------------------------------------------------------------------------------------------------
-
 One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer}\cite{packard1986lattice} The model represents the surface into cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
 
 \begin{figure}[h]
