@@ -2,89 +2,56 @@
 One of the field that we are going to investigate with this project is the usage of one particular tool - IPython notebook. As mentioned in the Problem Statement section \ref{subsec:problem}, IPython has become powerful coding tool for various areas in researches, which leads to the questions - is it helpful?; how many journals and explorations are using IPython? 
 
 \subsubsection{What is IPython Notebook}
+\label{definition}
 
 Created in 2011, by Fernando Pérez, a data researcher at the University of California and computational physicist Brian Granger at California Polytechnic State University, IPython has become an effective tool for numerical analysis and data visualizations.\cite{shen2014interactive} It is a Python environment, which is HTML-based, similar to Mathematica - \textit{"a symbolic mathematical computation program used in many scientific, engineering, mathematical, and computing fields"}. \cite{mathematicaWiki} \cite{mathematicaWolfram} Also, IPython is an interactive tool that uses cells, in which the calculations can be computed, formulated and even documented. The software application runs locally open from a web browser - the command \textit{\$ ipython notebook} is a new browser window where all noteboks can be seen and the developer can run it from any directory that s/he wants.  \cite{johansson2014introduction}
 
+IPython notebook has to main elements:\cite{ipythonFeatures}
+
+\begin{itemize}
+\item \textbf{Web application} - a browser-based tool for interactive management of documents which mixes text, functions, computations and visualisations, such as graphs and charts. 
+\item \textbf{Notebook documents} -a illustration of all the information represented in the web application, including inputs and outputs of the text, functions, computations and visualisations of results.
+\end{itemize}
+
 IPython is stored as a file in JSON format - data objects are in the attribute-value pairs composition, and it is containing the Python programming language with various modules by which a developer can program in the notebook script. The unique feature of IPython is that code can be combined with the code results and text. However, it is not a stand-alone Python application and IPython notebook server installation is required.
+
+Another feature of IPython is the capability of exporting files into different formats, such as pdf, html, LaTeX. Moreover, the IPython Notebook Viewer (nbviewer) allows a sharing options for the scripts that have been created. The function "loads the notebook document from the URL and renders it as a static web page".\cite{ipythonDef} The nbviewer feature can be presented as  nbconvert in a web-based format, with which it could be created static files. 
 
 \subsubsection{Why IPython Notebook was created}
 
 Data scientists are challenged with the creation of an understandable programs' descriptions, used for explaining computations in their researches. There are various reasons for that, but one of them is connected with the constant and gradual style of the analysts to explain new ideas and concepts. As a result of it, various versions of code that are connected between each other and shows different findings, are created. However, it is demanding for the reader to track all of the scripts which often are not well detailed. Granger has said: \textit{"a high-level description of the algorithm that goes into the paper is light years away from
 the details that are written in the code. Without those details, there is no way that someone could reproduce it in a reasonable time scale."} \cite{shen2014interactive}
 
-------------------------------------------------------------------------------------------------------
+IPython was created to be an agile tool for scientific programming and data investigation. It supports a reproducible research, since the inputs and outputs are saved as ".ipynb" notebooks. IPython is the interactive approach of programming on Python - it is providing a web-based application of the console-based way, handling all of the scientific process: implementing functionaly, documenting and recording, running and presenting the outcomes. As a consequence of that, executable code can contains analytical text explaining mathematical functions, and results can have detailed visualisations. IPython can supply records of sessions, notebooks and findings. Since the notebooks script are documents internally JSON files saved as .ipynb files, they can be shared in version-control and with other researchers. \cite{ipythonFeatures}
 
-(Pérez,
-Granger and their colleagues are now moving
-the notebook into a project called Jupyter, which
-aims to make IPython more compatible with
-other languages, including Julia and R)
+\subsection{Similar Software Tools}
 
+There are various applications that are used in data analysis and assessment in science researches, such as Mathematica - as mentioned in \ref{definition}, and Maple - "supports mathematical structures as fundamental types, such as polynomials, complex numbers, and vectors, and it allows you to easily construct and test for more complicated structures".\cite{mathematicaWiki} \cite{maple} They are both analysis packages widely used in scientific programming and notebooks programs. Another software tool is MatLab - high-level language, which gives the opportunity to investigate and visualize and share ideas across fields of study including signal and image processing, managements and maintenance systems, communications, and computational finance.\cite{matLab} It, also, supports notebook applications.
 
-Keeping track of the different versions of code
-that produce various figures, and linking those
-files with explanatory notes, is a headache.
-And what gets published is usually not detailed
-enough for the reader to follow up on. “In my
-own computational physics work,” says Granger,
-“a high-level description of the algorithm that
-goes into the paper is light years away from
-the details that are written in the code. Without
-those details, there is no way that someone
-could reproduce it in a reasonable time scale.”
+There are various notebooks and notebooks programs that are uploaded online as an open-source projects - e.g. knitr, which works with the R software language. R is one more language that is widely used for scientific computations and data analysis.\cite{knitr} To continue with the numerous examples of statistical programming tools, Sage is also a mathematical software system, which is Python-based and it has it's own notebook, and Dexy - software system for creating documents and visualizations for results' objects.\cite{sage}\cite{dexy}\cite{shen2014interactive} 
 
-Applications similar to the IPython notebook
-already exist for various programming
-languages. Mathematica and Maple — commercial
-analysis packages popular among mathematicians
-— include notebooks or notebook-like
-programs. MATLAB, a commercial package
-used heavily in signal processing, engineering
-and medical-imaging research, also supports a
-notebook application. Each of these notebooks
-is specialized for its corresponding proprietary
-programming language.
-A number of notebooks and notebook-like
-programs exist in the open-source world; knitr
-works with the R coding language, which is
-especially powerful for statistical analysis. And
-the Sage mathematical software system, which
-is also based on the Python language, supports
-its own notebook. Dexy is a notebook-like program
-that focuses on helping users to generate
-papers and presentations that incorporate prose,
-code, figures and other media.
-But the IPython notebook has become one
-of the most widely adopted programs of its
-kind, says Ana Nelson, the creator of Dexy. “So
-many people have heard of it who haven’t heard
-of any other tool,” she says. Granger and Pérez
-do not know how many people have tried their
-software, but say that traffic to the website suggests
-that roughly 500,000–1.5 million people
-actively use the program. Nelson says that it is
-the best-designed of the digital notebooks, and
-attracts many users because it is free and open
-source. The application also benefits from the
-popularity of the Python language, which boasts
-a robust scientific community that meets for an
-annual international conference, and is (relatively)
-easy for novice.
+\subsubsection{Contributions}
+
+Several scientific projects have exploited IPython as a platform
+rather than as an end-user application. Although
+the vast majority of IPython users do little customization beyond
+setting a few personal options, these projects show
+that there is a real use case for open, customizable interactive
+environments in scientific computing:\cite{perez2007ipython}
+
+\begin{itemize}
+\item IPython is applied for astronomical image analysis from the Space Telescope Science Institute, which is a free-standing science center. Its PyRAF, which is a command language based on the Python scripting language, uses IPython and it provides a shell customized for easier interaction. \cite{pyRaf}
+
+\item The National Radio Astronomy Observatory’s Common Astronomy Software Applications, also, uses IPython. Its work includes C++ tools combined together with an IPython interface, which are applied as a data reduction tasks.\cite{casa} As mentioned in the CASA web site: \textit{"this structure provides flexibility to process the data via task interface or as a python script. In addition to the data reduction tasks, many post-processing tools are available for even more flexibility and special purpose reduction needs."}\cite{casa}
+
+\item The Pymerase project is a tool that creates a python object model, relational database, and an object-relational model connecting the two. It uses IPython for microarray gene expression databases.\cite{pymerase}
+
+\item More examples of projects using IPython can be found on GitHub.\cite{gitHubAlliPython}
+\end{itemize}
 
 
 
-At the University of Texas at Austin, Tal Yarkoni
-uses the IPython notebook to run automated
-meta-analyses of brain imaging studies to
-uncover patterns of neural activity involved in
-language processing, emotion and other processes.
-The psychoinformatician plans to publish
-the notebooks as companions to his future
-journal articles. “The more complicated the
-analyses, the greater the benefits of being able to convey all that in one simple document,” he says.
-\cite{shen2014interactive}
 
-------------------------------------------------------------------------------------------------------
 
 
 
