@@ -1,1 +1,15 @@
-state how you propose to solve the software development problem. Show that your proposed approach is feasible, but identify any risks.
+% state how you propose to solve the software development problem. Show that your proposed approach is feasible, but identify any risks.
+
+The first stage of the project was to download information from GitHub - all of the results from the GitHub search for IPython.\cite{gitHubAPI} For now only three repositories that are using IPython are extracted from the API. However, there were challenges met along the way. One of them, which has not been implemented yet, is that the search showing only one page, which includes maximum 30 results - when downloading information from the API, the algorithm has to traverse through all of the pages and download with respect to the limits given from GitHub - \textit{"the rate limit allows you to make up to 10 requests per minute"}\cite{traverseGitHub}. Another challenge that we have to consider and, also, it has not been done yet, is the usage of an additional server from the University of Glasgow for storing all of the repositories' content. 
+
+The next stage of the project will be analysing the information for the GitHub API. It can be divided into three other steps, depending on: GitHub repository aspects, which can be seen at figure \ref{fig:github}, reproducibility and replication of IPython and of the implemented code, and nature of IPython scripts in the repositories. 
+
+\begin{description}
+\item[GitHub repository aspects] \hfill \\ All of the points mentioned in figure \ref{fig:github}, will be implemented. They will contribute to the other two steps of the project's analysis. This aspect should be done for not more than three weeks. 
+
+\item[Reproducibility and Replication] \hfill \\ These aspects will be considered over the analysis of IPython scripts and the code implemented in this project. These features can be checked by investigating the results from the pull requests and comments from other researchers. The project is trying to create algorithms as general as possible so that they can be used for analysis over other open source repositories. This aspect should be done for not more than three weeks. 
+
+\item[Nature of IPython scripts] \hfill \\ This part of the analysis will look at the amount of code and text and for what types of researches IPython is used. It will include number of pull requests, contributors - in what area of study they are interested at and how much they have contributed to other repositories, the number of used IPython scripts in a repository and in what is the repository's field of science. This aspect should be done for not more than three weeks. 
+\end{description}
+
+The amount of time for analysing the results from the calculations made, might take up to two weeks and the writing the dissertation - two more weeks. Overall, the predicted time for the implementation of the project is 13 weeks. The suggested approach might be extended or changed depending from the results and the challenges that are yet to be encountered.
