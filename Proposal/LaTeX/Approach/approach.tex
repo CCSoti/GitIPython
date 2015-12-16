@@ -1,7 +1,7 @@
 
 The purpose of this research is to understand the use of IPython as an instrument of scientific research.  To do this, the research will develop analyses of IPython projects stored on the GitHub open source repository. The first part of the approach is connected with high-level explanation of the project's concept - trying to identify the fundamental points of the IPython's usage. The second part is explaining the metrics done for supporting our approach.
 
-In order to understand and investigate in detail the reproducibility, replication and the nature of IPython scripts, the research is giving high-level description of the main idea by stating the following questions:
+In order to understand and investigate in detail the reproducibility, replication and the nature of IPython scripts, the research is giving high-level description of the main idea by stating the following questions, which later will be supported by various metrics, such as string manipulations and readability analysis:
 
 \begin{itemize}
 \item how readable is the code?
@@ -20,29 +20,21 @@ In order to understand and investigate in detail the reproducibility, replicatio
 
 \end{itemize}
 
-- analysis, readability metrics, string manipulation, assessing different structure of files and folders.
-
-The steps that we need to take for the realization of the projects are:
+The findings from the analysis might help with the discovery of features for investigation. Furthermore, the steps that we need to take for the realization of the project and structuring it in a understandable course of actions, are:
 
 \begin{enumerate}
-\item Search GitHub for iPython project.
-\item Discriminate between end-user scripts and iPython extensions.
-\item Download a sample of projects meeting criteria
-\item Execute analytical scripts on code
+\item Search GitHub results for IPython projects.
+\item Download a sample of projects meeting criteria.
+\item Discriminate between end-user scripts and IPython extensions.
+\item Execute analytical scripts on code.
+\item Along the way, implement tests for the functionality.
+\item Download all of the data for the projects.
+\item Test the analytical scripts by running them on the bigger data set.
+\item Test if the analytical scripts will work for data from other open source repositories' information, such as BitBucket \cite{bitBucket}.
 \end{enumerate}
 
+One of the first stages of the project is to download sample information from GitHub - all of the results from the GitHub search for IPython \cite{gitHubAPI}. For now, only three repositories that are using IPython are extracted from the API. However, there were challenges met along the way. One of them, which has not been implemented yet, is that the search showing only one page, which includes maximum thirty results - when downloading information from the API, the algorithm has to traverse through all of the pages and download with respect to the limits given from GitHub - \textit{"the rate limit allows you to make up to ten requests per minute"}\cite{traverseGitHub}. Another challenge that we have to consider and, also, it has not been done yet, is the usage of an additional server from the University of Glasgow for storing all of the repositories' content. 
 
+Moreover, functionality for finding the overall documentation for a repository has been  implemented - usually the \textit{"README.md"} file in a repository is containing a description of the a project, but not all of them are called with the same name and are not in same folder. An automated method was designed for traversing through the structure of the repositories, but it is finding only the \textit{"README.md"} files, which is requires improvements. Readability analysis are created for the \textit{"README.md"} files - it is calculating number of syllables, lexicons, sentences, Flesch Reading Ease Score - measures textual difficulty, which indicates how easy a text is to read \cite{flesch}, Flesch Kincaid Grade level - the number of years of education generally required to understand a text \cite{fleschLevel}, Gunning fog scale - measures the readability of English writing \cite{fogIndex}, Smog analysis -  is a measure of readability that estimates the years of education needed to understand a piece of writing \cite{smog}, and formulas gauging the understandability of a text, such as Coleman-Liau Formula \cite{coleman}, Automated readability index \cite{automated}. However, it is traversing only through one of the downloaded repository projects and this functionality needs rework so that it can produce results for all folders. Important aspects that we have to consider during these part of the analysis, are the perils of GitHub mentioned on figure \ref{fig:github}. The improvement of these steps should take not more than two weeks.
 
-The first stage of the project was to download information from GitHub - all of the results from the GitHub search for IPython.\cite{gitHubAPI} For now only three repositories that are using IPython are extracted from the API. However, there were challenges met along the way. One of them, which has not been implemented yet, is that the search showing only one page, which includes maximum 30 results - when downloading information from the API, the algorithm has to traverse through all of the pages and download with respect to the limits given from GitHub - \textit{"the rate limit allows you to make up to 10 requests per minute"}\cite{traverseGitHub}. Another challenge that we have to consider and, also, it has not been done yet, is the usage of an additional server from the University of Glasgow for storing all of the repositories' content. 
-
-The next stage of the project will be analysing the information for the GitHub API. It can be divided into three other steps, depending on: GitHub repository aspects, which can be seen at figure \ref{fig:github}, reproducibility and replication of IPython and of the implemented code, and nature of IPython scripts in the repositories. 
-
-\begin{description}
-\item[GitHub repository aspects] \hfill \\ All of the points mentioned in figure \ref{fig:github}, will be implemented. They will contribute to the other two steps of the project's analysis. This aspect should be done for not more than three weeks. 
-
-\item[Reproducibility and Replication] \hfill \\ These aspects will be considered over the analysis of IPython scripts and the code implemented in this project. These features can be checked by investigating the results from the pull requests and comments from other researchers. The project is trying to create algorithms as general as possible so that they can be used for analysis over other open source repositories. This aspect should be done for not more than three weeks. 
-
-\item[Nature of IPython scripts] \hfill \\ This part of the analysis will look at the amount of code and text and for what types of researches IPython is used. It will include number of pull requests, contributors - in what area of study they are interested at and how much they have contributed to other repositories, the number of used IPython scripts in a repository and in what is the repository's field of science. This aspect should be done for not more than three weeks. 
-\end{description}
-
-The amount of time for analysing the results from the calculations made, might take up to two weeks and the writing the dissertation - two more weeks. Overall, the predicted time for the implementation of the project is 13 weeks. The suggested approach might be extended or changed depending from the results and the challenges that are yet to be encountered.
+The fourth stage should be the most time-consuming - around one month, since the fifth one has to be implemented in concurrence with it. The third step should be complete in three weeks, the sixth and seventh - in two weeks and the eight - again, in two weeks. The time left would be left for writing the dissertation and for creating more functionality. Overall, the predicted time for the implementation of the project is 13 weeks. The suggested approach might be extended or changed depending from the results and the challenges that are yet to be encountered.
