@@ -1,4 +1,37 @@
-% state how you propose to solve the software development problem. Show that your proposed approach is feasible, but identify any risks.
+
+The purpose of this research is to understand the use of IPython as an instrument of scientific research.  To do this, the research will develop analyses of IPython projects stored on the GitHub open source repository. The first part of the approach is connected with high-level explanation of the project's concept - trying to identify the fundamental points of the IPython's usage. The second part is explaining the metrics done for supporting our approach.
+
+In order to understand and investigate in detail the reproducibility, replication and the nature of IPython scripts, the research is giving high-level description of the main idea by stating the following questions:
+
+\begin{itemize}
+\item how readable is the code?
+\item how complete is the documentation?
+\item how many commits over a certain period of time have been made?
+\item what is the frequency of commits, pull and other requests?
+\item what is the log message usefulness?
+\item how many projects have licences - what form do they take?
+\item how many projects are linked to research papers?
+\item what are the different fields of science using iPython?
+\item how long is a typical script (and what variation)?
+\item is there a stereotypical 'template' for how a notebook script is presented?
+\item how long the a project is developed?
+\item is there any other software tools used in a specific repository? 
+\item what type of risks did IPython scripts cost for the implementation of a project? 
+
+\end{itemize}
+
+- analysis, readability metrics, string manipulation, assessing different structure of files and folders.
+
+The steps that we need to take for the realization of the projects are:
+
+\begin{enumerate}
+\item Search GitHub for iPython project.
+\item Discriminate between end-user scripts and iPython extensions.
+\item Download a sample of projects meeting criteria
+\item Execute analytical scripts on code
+\end{enumerate}
+
+
 
 The first stage of the project was to download information from GitHub - all of the results from the GitHub search for IPython.\cite{gitHubAPI} For now only three repositories that are using IPython are extracted from the API. However, there were challenges met along the way. One of them, which has not been implemented yet, is that the search showing only one page, which includes maximum 30 results - when downloading information from the API, the algorithm has to traverse through all of the pages and download with respect to the limits given from GitHub - \textit{"the rate limit allows you to make up to 10 requests per minute"}\cite{traverseGitHub}. Another challenge that we have to consider and, also, it has not been done yet, is the usage of an additional server from the University of Glasgow for storing all of the repositories' content. 
 
