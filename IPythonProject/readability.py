@@ -15,8 +15,7 @@ class ReadabilityAnalysis():
     # extract the text from README.md file if the repository has it
     def extract_text(self):
         repo_path = os.path.dirname(os.getcwd())  # os.path.dirname returns upper directory from current one
-        if "IPythonProject" in repo_path:
-            repo_path = repo_path.replace("IPythonProject", "")
+
         os.chdir(repo_path)
         print(repo_path)
         find_file = repo_path + "\IPythonProject\\NewGitHubProjects\\" + self.repo_name
@@ -48,7 +47,7 @@ class ReadabilityAnalysis():
                         readme_text.append(line)
                 all_found_files.append(readme_text)
         except FileNotFoundError:
-            print("Repository doesn't contain README.md file.")
+            print("Repository doesn't contain README or LICENSE file.")
 
         return all_found_files, readme_paths
 

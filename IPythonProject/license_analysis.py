@@ -19,7 +19,7 @@ class LicenseAnalysis:
         repo = Repo.init(path_project)
         return repo
 
-    def main(self):
+    def traverse_repo(self):
         repo = self.create_repo()
 
         # explanation for the entries http://gitpython.readthedocs.org/en/stable/reference.html#module-git.index.base
@@ -36,13 +36,18 @@ class LicenseAnalysis:
             print(tre.name)
 
     def extract_file(self):
-        ra = ReadabilityAnalysis("ipython")
+        ra = ReadabilityAnalysis("pydata")
         license_text, readme_file = ra.extract_text()
         print(readme_file)
 
+    def traverse_projects(self):
+        repo_path = os.path.dirname(os.getcwd())
+
+        for dirs in os.listdir(repo_path):
+            print(dirs)
 
 
 
-repo = LicenseAnalysis("ipython")
-# repo.main()
+repo = LicenseAnalysis("pydata")
 repo.extract_file()
+repo.traverse_projects()
