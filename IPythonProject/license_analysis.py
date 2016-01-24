@@ -3,6 +3,7 @@ import os
 from git import Repo
 
 from IPythonProject.wrapper import RepositoryWrapper
+from IPythonProject.readability import ReadabilityAnalysis
 
 
 class LicenseAnalysis:
@@ -12,7 +13,7 @@ class LicenseAnalysis:
 
     def create_repo(self):
         temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-        path_project = temp_path + "\GitHubProjects" + "\\" + self.name
+        path_project = temp_path + "\\NewGitHubProjects" + "\\" + self.name
         print("Path: " + path_project)
 
         repo = Repo.init(path_project)
@@ -34,7 +35,14 @@ class LicenseAnalysis:
         for tre in tree:
             print(tre.name)
 
+    def extract_file(self):
+        ra = ReadabilityAnalysis("ipython")
+        license_text, readme_file = ra.extract_text()
+        print(readme_file)
 
 
-repo = LicenseAnalysis("vim-ipython")
-repo.main()
+
+
+repo = LicenseAnalysis("ipython")
+# repo.main()
+repo.extract_file()

@@ -4,6 +4,7 @@ __author__ = 'SilviyaSoti'
 
 from textstat.textstat import textstat
 
+LICENSES = ["README.md", "README.txt", "README.org", "LICENSE", "README.rst"]
 
 # class for getting text from files and analysing them for readability
 class ReadabilityAnalysis():
@@ -18,30 +19,38 @@ class ReadabilityAnalysis():
             repo_path = repo_path.replace("IPythonProject", "")
         os.chdir(repo_path)
         print(repo_path)
-        find_file = repo_path + "\\" + self.repo_name
+        find_file = repo_path + "\IPythonProject\\NewGitHubProjects\\" + self.repo_name
         os.chdir(find_file)
 
+        # a path for the LAST found readme or license file
         found_path = ""
+        readme_paths = []
         for root, dirs, files in os.walk(find_file):
             for file in files:
-                if file is "README.md" and os.path.join(root, file) is not None:
+                if file in LICENSES and os.path.join(root, file) is not None:
                     found_path = os.path.join(root, file)
+                    readme_paths.append(found_path)
 
             for dir in dirs:
                 for root2, dirs2, files2 in os.walk(find_file + "\\" + dir):
                     for file2 in files2:
-                        if file2 == "README.md" and os.path.join(root, file2) is not None:
+                        if file2 in LICENSES and os.path.join(root, file2) is not None:
                             found_path = os.path.join(root2, file2)
+                            readme_paths.append(found_path)
 
-        readme_text = []
+        # list of lists, where the list elements are texts from the founded files
+        all_found_files = []
         try:
-            with open(found_path, 'r') as readme_file:
-                for line in readme_file:
-                    readme_text.append(line)
+            for path in readme_paths:
+                readme_text = []
+                with open(path, 'r') as readme_file:
+                    for line in readme_file:
+                        readme_text.append(line)
+                all_found_files.append(readme_text)
         except FileNotFoundError:
             print("Repository doesn't contain README.md file.")
 
-        return readme_text
+        return all_found_files, readme_paths
 
     def syllable_number(self):
         readme_text = self.extract_text()
@@ -176,18 +185,18 @@ class ReadabilityAnalysis():
         return textstat.readability_consensus(overall_read)
 
 
-ra = ReadabilityAnalysis("tarmstrong")
+# ra = ReadabilityAnalysis("tarmstrong")
 # print(ra.extract_text())
-print(ra.syllable_number())
-print(ra.lexicon_number())
-print(ra.sentence_number())
-print(ra.flesch_reading_ease_score())
-print(ra.flesch_kincaid_grade_level())
-print(ra.fog_scale())
-print(ra.smog_analysis())
-print(ra.automated_index())
-print(ra.coleman_index())
-print(ra.linsear_write())
-print(ra.dale_chall_score())
-print(ra.consensus_analysis())
+# print(ra.syllable_number())
+# print(ra.lexicon_number())
+# print(ra.sentence_number())
+# print(ra.flesch_reading_ease_score())
+# print(ra.flesch_kincaid_grade_level())
+# print(ra.fog_scale())
+# print(ra.smog_analysis())
+# print(ra.automated_index())
+# print(ra.coleman_index())
+# print(ra.linsear_write())
+# print(ra.dale_chall_score())
+# print(ra.consensus_analysis())
 
