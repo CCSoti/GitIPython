@@ -35,19 +35,25 @@ class LicenseAnalysis:
         for tre in tree:
             print(tre.name)
 
-    def extract_file(self):
-        ra = ReadabilityAnalysis("pydata")
-        license_text, readme_file = ra.extract_text()
-        print(readme_file)
-
     def traverse_projects(self):
         repo_path = os.path.dirname(os.getcwd())
+        find_file = repo_path + "\IPythonProject\\NewGitHubProjects"
 
-        for dirs in os.listdir(repo_path):
-            print(dirs)
+        repos_license_no = []
+        repos_license_yes = []
+
+        for dirs in os.listdir(find_file):
+            ra = ReadabilityAnalysis(find_file + "\\" + dirs)
+            license_text, readme_file = ra.extract_text(find_file + "\\" + dirs)
+            if not readme_file:
+                repos_license_no.append(dirs)
+            else:
+                repos_license_yes.append(dirs)
+
+        print(repos_license_no)
+        print(repos_license_yes)
 
 
 
 repo = LicenseAnalysis("pydata")
-repo.extract_file()
 repo.traverse_projects()

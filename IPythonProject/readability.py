@@ -13,13 +13,7 @@ class ReadabilityAnalysis():
         pass
 
     # extract the text from README.md file if the repository has it
-    def extract_text(self):
-        repo_path = os.path.dirname(os.getcwd())  # os.path.dirname returns upper directory from current one
-
-        os.chdir(repo_path)
-        print(repo_path)
-        find_file = repo_path + "\IPythonProject\\NewGitHubProjects\\" + self.repo_name
-        os.chdir(find_file)
+    def extract_text(self, find_file):
 
         # a path for the LAST found readme or license file
         found_path = ""
