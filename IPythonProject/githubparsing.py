@@ -18,16 +18,49 @@ class GitHubParsing():
     # fetch the data from the GitHub API
     def git_ipython_repos(self):
 
-        json_data = "https://api.github.com/search/repositories?q=IPython"  # &page=2
+        # pages_num = &per_page=100&page=
+        json_data = "https://api.github.com/search/repositories?q=IPython&per_page=100&page=1"
         request_data = requests.get(json_data)
+        print(type(request_data))
 
         repoItem = {}
+        repos_num = 0
         if request_data.ok:
             repoItem = json.loads(request_data.text)
+            items = repoItem["items"]
+            repos_num = repoItem["total_count"]
 
-            if os.path.exists("data_copy.json") is False:
-                with open('data_copy.json', 'w') as outfile:
-                    json.dump(repoItem, outfile)
+            index = 2
+            start_time = time.time()
+            while index <= (repos_num/100):
+                if index % 9 == 0:
+                    time.sleep(60)
+                if index % 59 == 0:
+                    time.sleep(1800)
+
+                print(len(str(index)))
+
+                if len(str(index)) == 1 or index == 10:
+                    json_data = json_data[:-1]
+                elif len(str(index)) == 2:
+                    json_data = json_data[:-2]
+                json_data += str(index)
+                print("After:   ", json_data)
+
+                request_data = requests.get(json_data)
+                repoItem2 = json.loads(request_data.text)
+                items2 = repoItem2["items"]
+
+                combined = items.extend(items2)
+                repoItem["items"] = combined
+
+                index += 1
+
+
+        if os.path.exists("data_copy.json") is False:
+            with open('data_copy.json', 'w') as outfile:
+                json.dump(repoItem, outfile)
+            outfile.close()
 
         return repoItem
 
@@ -71,6 +104,15 @@ class GitHubParsing():
             time_sum += clone_time
             print(time_sum, clone_time, index)
 
+    def traverse_through_pages(self):
+        git_parsing = GitHubParsing()
+        data = git_parsing.data
+        total_count = data["total_count"]
+
+        index = 2
+        while index <= total_count:
+            index += 1
+
     # main method for calling all the functions we need
     def main(self):
         repos_dict = self.repos_urls()
@@ -78,4 +120,6 @@ class GitHubParsing():
 
 
 git_parsing = GitHubParsing()
-git_parsing.main()
+# git_parsing.main()
+repos = git_parsing.git_ipython_repos()
+print(len(repos["items"]))
