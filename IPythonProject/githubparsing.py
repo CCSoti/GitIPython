@@ -8,12 +8,15 @@ import os.path
 from IPythonProject.wrapper import RepositoryWrapper
 
 
+
 class GitHubParsing():
     def __init__(self):
-        with open('data_copy.json') as data_file:
-            data = json.load(data_file)
-        data_file.close()
-        self.data = data
+        with open('data_copy2.json') as data_file:
+            print(os.stat('data_copy2.json').st_size)
+            if os.stat('data_copy2.json').st_size!=0:
+                data = json.load(data_file)
+                data_file.close()
+                self.data = data
 
     # fetch the data from the GitHub API
     def git_ipython_repos(self):
@@ -32,9 +35,12 @@ class GitHubParsing():
 
             index = 2
             start_time = time.time()
-            while index <= (repos_num/100):
+            combined = items
+
+            # we have a restriction, not more than 1000 results for a search
+            while (index*100) <= 1000:
                 if index % 9 == 0:
-                    time.sleep(60)
+                    time.sleep(30)
                 if index % 59 == 0:
                     time.sleep(1800)
 
@@ -51,14 +57,14 @@ class GitHubParsing():
                 repoItem2 = json.loads(request_data.text)
                 items2 = repoItem2["items"]
 
-                combined = items.extend(items2)
+                combined += items2
                 repoItem["items"] = combined
 
                 index += 1
 
 
-        if os.path.exists("data_copy.json") is False:
-            with open('data_copy.json', 'w') as outfile:
+        if os.path.exists("data_copy2.json") is True:
+            with open('data_copy2.json', 'w') as outfile:
                 json.dump(repoItem, outfile)
             outfile.close()
 
