@@ -82,7 +82,7 @@ class GitHubParsing():
 
         return repos_dict
 
-    # get data for only 3 repositories using wrapper.py class
+    # get data for only num repositories using wrapper.py class
     def clone_repositories(self, repos_dict, num):
 
         index = 1
@@ -122,7 +122,7 @@ class GitHubParsing():
     # main method for calling all the functions we need
     def main(self):
         repos_dict = self.repos_urls()
-        self.clone_repositories(repos_dict, 10)
+        self.clone_repositories(repos_dict, 1000)
 
 
 git_parsing = GitHubParsing()
