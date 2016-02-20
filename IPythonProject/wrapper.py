@@ -19,6 +19,9 @@ class RepositoryWrapper():
 
         repo = Repo.init(path_project)
         origin = repo.create_remote('origin', remote_url)
-        origin.fetch()
-        origin.pull(origin.refs[0].remote_head)
+        try:
+            origin.fetch()
+            origin.pull(origin.refs[0].remote_head)
+        except:
+            print("Could not clone or fetch repository.")
         # print(repo.index.entries)
