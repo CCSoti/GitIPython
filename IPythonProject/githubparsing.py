@@ -126,6 +126,6 @@ class GitHubParsing():
 
 
 git_parsing = GitHubParsing()
-# git_parsing.main()
-repos = git_parsing.git_ipython_repos()
-print(len(repos["items"]))
+git_parsing.main()
+# repos = git_parsing.git_ipython_repos()
+# print(len(repos["items"]))
