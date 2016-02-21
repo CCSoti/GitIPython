@@ -101,7 +101,6 @@ class GitHubParsing():
             repos_dict_keys = list(repos_dict_keys)
             repo_name = repos_dict_keys[index]
             repo_url = repos_dict[repos_dict_keys[index]]
-            index += 1
 
             start_time = time.time()
             repo_info = RepositoryWrapper(repo_name, repo_url)
@@ -109,6 +108,7 @@ class GitHubParsing():
             clone_time = time.time() - start_time
             time_sum += clone_time
             print(time_sum, clone_time, index)
+            index += 1
 
     def traverse_through_pages(self):
         git_parsing = GitHubParsing()
