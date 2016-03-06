@@ -1,12 +1,13 @@
 import time
 
+import pickle
+
 __author__ = 'SilviyaSoti'
 
 import requests
 import json
 import os.path
 from IPythonProject.wrapper import RepositoryWrapper
-
 
 
 class GitHubParsing():
@@ -82,12 +83,13 @@ class GitHubParsing():
 
         return repos_dict
 
-    # get data for only num repositories using wrapper.py class
+    # get data for only 3 repositories using wrapper.py class
     def clone_repositories(self, repos_dict, num):
 
         index = 1
         repos_dict_keys = repos_dict.keys()
         time_sum = 0
+        repo_objects_list = []
 
         while index <= num:
             # check how much time has elapsed
@@ -105,9 +107,13 @@ class GitHubParsing():
             start_time = time.time()
             repo_info = RepositoryWrapper(repo_name, repo_url)
             repo_info.clone_repos()  # changes
+            # list with repository objects
+
+            repo_objects_list.append(repo_info)
+
             clone_time = time.time() - start_time
             time_sum += clone_time
-            print(time_sum, clone_time, index)
+            # print(time_sum, clone_time, index)
             index += 1
 
     def traverse_through_pages(self):
@@ -122,10 +128,11 @@ class GitHubParsing():
     # main method for calling all the functions we need
     def main(self):
         repos_dict = self.repos_urls()
-        self.clone_repositories(repos_dict, 1000)
+        self.clone_repositories(repos_dict, 20)
 
 
 git_parsing = GitHubParsing()
 git_parsing.main()
+
 # repos = git_parsing.git_ipython_repos()
-# print(len(repos["items"]))
+# print(len(git_parsing.data["items"]))

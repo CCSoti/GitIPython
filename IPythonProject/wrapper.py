@@ -14,7 +14,7 @@ class RepositoryWrapper():
     def clone_repos(self):
         remote_url = self.url
         temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-        path_project = temp_path + "/NewGitHubProjects/" + self.name
+        path_project = temp_path + "/NewGitHubProjects2/" + self.name
         print("Path: " + path_project)
 
         repo = Repo.init(path_project)
@@ -26,16 +26,26 @@ class RepositoryWrapper():
             print("Could not clone or fetch repository.")
             # print(repo.index.entries)
 
-    def get_num_commits(self):
-        temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-        path_project = temp_path + "/NewGitHubProjects/" + self.name
 
-        repo = Repo.clone_from(self.url, path_project, branch='master')
-        # origin = repo.create_remote('origin', remote_url)
+def get_num_commits():
+    temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
+    path_project = temp_path + "\\NewGitHubProjects\\"
+    num_commits = []
 
-        num_commits = list(repo.iter_commits('master'))
-        return num_commits
+    # for dirs in os.listdir(path_project):
+    #     print(dirs)
+
+    for dir in os.listdir(path_project):
+            print("Directory: ", dir)
+            repo = Repo(path_project + dir, search_parent_directories=True)
+            print(repo.active_branch.is_valid())
+            if repo.active_branch.is_valid():
+                commits = list(repo.iter_commits())
+                num_commits.append(len(commits))
 
 
-rw = RepositoryWrapper("GitIPython", "https://github.com/CCSoti/GitIPython")
-print(len(rw.get_num_commits()))
+    return num_commits
+
+
+# rw = RepositoryWrapper()
+print(get_num_commits())
