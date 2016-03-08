@@ -36,13 +36,13 @@ def get_num_commits():
     #     print(dirs)
 
     for dir in os.listdir(path_project):
-            print("Directory: ", dir)
-            repo = Repo(path_project + dir, search_parent_directories=True)
+        for d in os.listdir(path_project + "\\" + dir):
+            print("Directory: ", d)
+            repo = Repo(path_project + "\\" + dir + "\\" + d, search_parent_directories=True)
             print(repo.active_branch.is_valid())
             if repo.active_branch.is_valid():
                 commits = list(repo.iter_commits())
-                num_commits.append(len(commits))
-
+                num_commits.append(commits)
 
     return num_commits
 

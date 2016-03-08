@@ -128,11 +128,11 @@ class GitHubParsing():
     # main method for calling all the functions we need
     def main(self):
         repos_dict = self.repos_urls()
-        self.clone_repositories(repos_dict, 20)
+        self.clone_repositories(repos_dict, 8)
 
 
-git_parsing = GitHubParsing()
-git_parsing.main()
+# git_parsing = GitHubParsing()
+# git_parsing.main()
 
 # repos = git_parsing.git_ipython_repos()
 # print(len(git_parsing.data["items"]))
