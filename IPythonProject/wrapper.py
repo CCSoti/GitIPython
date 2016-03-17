@@ -48,4 +48,4 @@ def get_num_commits():
 
 
 # rw = RepositoryWrapper()
-print(get_num_commits())
+# print(get_num_commits())

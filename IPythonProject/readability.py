@@ -2,9 +2,9 @@ import os
 
 __author__ = 'SilviyaSoti'
 
-from textstat.textstat import textstat
+import textstat.textstat
 
-LICENSES = ["README.md", "README.txt", "README.org", "LICENSE", "README.rst"]
+LICENSES = ["README.md", "README.txt", "README.org", "LICENSE", "README.rst", "LICENSE.md"]
 
 # class for getting text from files and analysing them for readability
 class ReadabilityAnalysis():
@@ -20,6 +20,7 @@ class ReadabilityAnalysis():
         readme_paths = []
         for root, dirs, files in os.walk(find_file):
             for file in files:
+                print(file)
                 if file in LICENSES and os.path.join(root, file) is not None:
                     found_path = os.path.join(root, file)
                     readme_paths.append(found_path)
@@ -49,21 +50,21 @@ class ReadabilityAnalysis():
         readme_text = self.extract_text()
         overall_num = 0
         for read in readme_text:
-            overall_num = overall_num + textstat.syllable_count(read)
+            overall_num = overall_num + textstat.textstat.textstat.syllable_count(read)
         return overall_num
 
     def lexicon_number(self):
         readme_text = self.extract_text()
         overall_num = 0
         for read in readme_text:
-            overall_num = overall_num + textstat.lexicon_count(read)
+            overall_num = overall_num + textstat.textstat.textstat.lexicon_count(read)
         return overall_num
 
     def sentence_number(self):
         readme_text = self.extract_text()
         overall_num = 0
         for read in readme_text:
-            overall_num = overall_num + textstat.sentence_count(read)
+            overall_num = overall_num + textstat.textstat.textstat.sentence_count(read)
         return overall_num
 
     """
@@ -84,7 +85,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.flesch_reading_ease(overall_read)
+        return textstat.textstat.textstat.flesch_reading_ease(overall_read)
 
     """
     Returns the grade score using the Flesch-Kincaid Grade Formula.
@@ -96,7 +97,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.flesch_kincaid_grade(overall_read)
+        return textstat.textstat.textstat.flesch_kincaid_grade(overall_read)
 
     """
     Returns the FOG index of the given text.
@@ -107,7 +108,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.gunning_fog(overall_read)
+        return textstat.textstat.textstat.gunning_fog(overall_read)
 
     """
     Return the SMOG index of the given text.
@@ -118,7 +119,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.smog_index(overall_read)
+        return textstat.textstat.textstat.smog_index(overall_read)
 
     """
     Returns the ARI(Automated Readability Index) which outputs a number that approximates the grade level needed to comprehend the text.
@@ -130,7 +131,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.automated_readability_index(overall_read)
+        return textstat.textstat.textstat.automated_readability_index(overall_read)
 
     """
     Returns the grade level of the text using the Coleman-Liau Formula
@@ -141,7 +142,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.coleman_liau_index(overall_read)
+        return textstat.textstat.textstat.coleman_liau_index(overall_read)
 
     """
     Returns the grade level using the Lisear Write Formula.
@@ -152,7 +153,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.linsear_write_formula(overall_read)
+        return textstat.textstat.textstat.linsear_write_formula(overall_read)
 
     """
     Different from other tests, since it uses a lookup table of most commonly used 3000 english words.
@@ -164,7 +165,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.dale_chall_readability_score(overall_read)
+        return textstat.textstat.textstat.dale_chall_readability_score(overall_read)
 
     """
     Based upon all the above analysis returns the most appropriate grade level under which the given text belongs to.
@@ -175,7 +176,7 @@ class ReadabilityAnalysis():
         overall_read = ""
         for read in readme_text:
             overall_read += read
-        return textstat.readability_consensus(overall_read)
+        return textstat.textstat.textstat.readability_consensus(overall_read)
 
 
 # ra = ReadabilityAnalysis("tarmstrong")
