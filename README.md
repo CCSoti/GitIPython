@@ -1,4 +1,4 @@
-# GitIPython
+# IPython Observatory
 Multi-perspective Discourse Analysis on the use of IPython
 
 IPython Observatory
