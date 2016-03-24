@@ -36,13 +36,37 @@ class Comparison:
                 else:
                     cell_input = cell["source"]
 
-                script_cell_input.append(cell_input)
+                cell_input_strip = []
+                for line in cell_input:
+                    line = line.split(" ")
+                    for word in line:
+                        cell_input_strip.append(word)
+
+                script_cell_input.append(cell_input_strip)
 
             ipynb_dict[ipynb_files[item]] = script_cell_input
             item += 1
 
         return ipynb_dict
 
+    def script_cells_compare(self):
+        ipynb_dict = self.get_cells_input()
+        cells = ipynb_dict.values()
+        all_words = []
+
+        for script in cells:
+            cell_index = 0
+            script_words = []
+            while cell_index < len(script):
+                current_cell = script[cell_index]
+                for line in script:
+                    if script.index(line) != cell_index:
+                        words = [(w, current_cell.count(w)) for w in set(current_cell) if w in line]
+                        script_words.append(words)
+                cell_index += 1
+            all_words.append(script_words)
+
+        return all_words
 
 compare = Comparison()
-print(compare.get_cells_input())
+print(compare.script_cells_compare())
