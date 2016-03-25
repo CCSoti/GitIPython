@@ -1,5 +1,7 @@
 import os
 
+import distance as distance
+
 from IPythonProject.license_analysis import LicenseAnalysis
 
 
@@ -36,13 +38,13 @@ class Comparison:
                 else:
                     cell_input = cell["source"]
 
-                cell_input_strip = []
-                for line in cell_input:
-                    line = line.split(" ")
-                    for word in line:
-                        cell_input_strip.append(word)
+                # cell_input_strip = []
+                # for line in cell_input:
+                #     line = line.split(" ")
+                #     for word in line:
+                #         cell_input_strip.append(word)
 
-                script_cell_input.append(cell_input_strip)
+                script_cell_input.append(cell_input)
 
             ipynb_dict[ipynb_files[item]] = script_cell_input
             item += 1
@@ -52,7 +54,10 @@ class Comparison:
     def script_cells_compare(self):
         ipynb_dict = self.get_cells_input()
         cells = ipynb_dict.values()
-        all_words = []
+        keys = ipynb_dict.keys()
+        keys = list(keys)
+        script_index = 0
+        all_words = {}
 
         for script in cells:
             cell_index = 0
@@ -60,11 +65,14 @@ class Comparison:
             while cell_index < len(script):
                 current_cell = script[cell_index]
                 for line in script:
+                    words = {}
                     if script.index(line) != cell_index:
-                        words = [(w, current_cell.count(w)) for w in set(current_cell) if w in line]
+                        # words = [(w, current_cell.count(w)) for w in set(current_cell) if w in line]
+                        words[(cell_index, script.index(line))] = (len(current_cell), len(line), distance.levenshtein(current_cell, line))
                         script_words.append(words)
                 cell_index += 1
-            all_words.append(script_words)
+            all_words[keys[script_index]] = script_words
+            script_index += 1
 
         return all_words
 
