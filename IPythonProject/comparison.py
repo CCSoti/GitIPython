@@ -38,12 +38,6 @@ class Comparison:
                 else:
                     cell_input = cell["source"]
 
-                # cell_input_strip = []
-                # for line in cell_input:
-                #     line = line.split(" ")
-                #     for word in line:
-                #         cell_input_strip.append(word)
-
                 script_cell_input.append(cell_input)
 
             ipynb_dict[ipynb_files[item]] = script_cell_input
@@ -67,7 +61,6 @@ class Comparison:
                 for line in script:
                     words = {}
                     if script.index(line) != cell_index:
-                        # words = [(w, current_cell.count(w)) for w in set(current_cell) if w in line]
                         words[(cell_index, script.index(line))] = (len(current_cell), len(line), distance.levenshtein(current_cell, line))
                         script_words.append(words)
                 cell_index += 1
