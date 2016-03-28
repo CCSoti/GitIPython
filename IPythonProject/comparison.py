@@ -17,25 +17,22 @@ class Comparison:
 
         return ipynb_files, ipynb_json
 
-    def get_cells_input(self):
-        ipynb_files, ipynb_json = self.get_scripts()
-        ipynb_dict = {}
-        item = 0
+    def traverse_file(self, script):
+        if "worksheets" in script:
+            cells = script["worksheets"][0]["cells"]
+        else:
+            cells = script["cells"]
 
-        # traverse the scripts' cells
-        for script in ipynb_json:
-            if "worksheets" in script:
-                cells = script["worksheets"][0]["cells"]
-            else:
-                cells = script["cells"]
+        script_cell_input = []
+        for cell in cells:
 
-            script_cell_input = []
-            for cell in cells:
-
-                if cell["cell_type"] == "code":
+            if cell["cell_type"] == "code":
+                if "input" in cell.keys():
                     cell_input = cell["input"]
                 else:
                     cell_input = cell["source"]
+            else:
+                cell_input = cell["source"]
 
                 # cell_input_strip = []
                 # for line in cell_input:
@@ -43,8 +40,18 @@ class Comparison:
                 #     for word in line:
                 #         cell_input_strip.append(word)
 
-                script_cell_input.append(cell_input)
+            script_cell_input.append(cell_input)
 
+        return script_cell_input
+
+    def get_cells_input(self):
+        ipynb_files, ipynb_json = self.get_scripts()
+        ipynb_dict = {}
+        item = 0
+
+        # traverse the scripts' cells
+        for script in ipynb_json:
+            script_cell_input = self.traverse_file(script)
             ipynb_dict[ipynb_files[item]] = script_cell_input
             item += 1
 
@@ -75,8 +82,7 @@ class Comparison:
 
         return all_words
 
-    def scripts_compare(self):
-        ipynb_dict = self.get_cells_input()
+    def scripts_compare(self, ipynb_dict):
         cells = ipynb_dict.values()
         keys = ipynb_dict.keys()
         keys = list(keys)
@@ -93,7 +99,6 @@ class Comparison:
             while file_index < len(cells):
 
                 if file_index != script_index and script_index not in traversed:
-                    print(file_index, script_index)
 
                     for sc_line in cells[script_index]:
                         for line in cells[file_index]:
@@ -101,6 +106,8 @@ class Comparison:
                             sc_line_ind = sc_line_ind.index(sc_line)
                             line_ind = cells[file_index]
                             line_ind = line_ind.index(line)
+
+                            # print(type(sc_line), type(line))
 
                             ratios = {(sc_line_ind, line_ind): (
                                 len(sc_line), len(line), distance.levenshtein(sc_line, line))}
@@ -132,15 +139,24 @@ class Comparison:
                         with open(found_path, encoding="utf8") as data_file:
                             file_json = json.load(data_file)
                         data_file.close()
-                        scripts.append(file_json)
+                        script_input = self.traverse_file(file_json)
+                        scripts.append(script_input)
 
             if scripts != []:
                 repos_dict[dir] = scripts
 
         return repos_dict
 
+    def repos_compare(self):
+        repos_dict = self.repos_scripts()
+        scripts = self.scripts_compare(repos_dict)
+
+        return scripts
+
 
 compare = Comparison()
 # print(compare.cells_compare())
-# print(compare.scripts_compare())
-print(compare.repos_scripts())
+# ipynb_dict = compare.get_cells_input()
+# print(compare.scripts_compare(ipynb_dict))
+# print(compare.repos_scripts())
+print(compare.repos_compare())
