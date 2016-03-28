@@ -1,7 +1,5 @@
 import os
-
 import distance as distance
-
 from IPythonProject.license_analysis import LicenseAnalysis
 
 
@@ -38,6 +36,12 @@ class Comparison:
                 else:
                     cell_input = cell["source"]
 
+                # cell_input_strip = []
+                # for line in cell_input:
+                #     line = line.split(" ")
+                #     for word in line:
+                #         cell_input_strip.append(word)
+
                 script_cell_input.append(cell_input)
 
             ipynb_dict[ipynb_files[item]] = script_cell_input
@@ -45,7 +49,7 @@ class Comparison:
 
         return ipynb_dict
 
-    def script_cells_compare(self):
+    def cells_compare(self):
         ipynb_dict = self.get_cells_input()
         cells = ipynb_dict.values()
         keys = ipynb_dict.keys()
@@ -61,7 +65,8 @@ class Comparison:
                 for line in script:
                     words = {}
                     if script.index(line) != cell_index:
-                        words[(cell_index, script.index(line))] = (len(current_cell), len(line), distance.levenshtein(current_cell, line))
+                        words[(cell_index, script.index(line))] = (
+                            len(current_cell), len(line), distance.levenshtein(current_cell, line))
                         script_words.append(words)
                 cell_index += 1
             all_words[keys[script_index]] = script_words
@@ -69,5 +74,46 @@ class Comparison:
 
         return all_words
 
+    def scripts_compare(self):
+        ipynb_dict = self.get_cells_input()
+        cells = ipynb_dict.values()
+        keys = ipynb_dict.keys()
+        keys = list(keys)
+        scripts = {}
+        cells = list(cells)
+        traversed = []
+
+        script_index = 0
+        file_index = 0
+
+        while script_index < len(cells):
+            script_cells = []
+
+            while file_index < len(cells):
+
+                if file_index != script_index and script_index not in traversed:
+                    print(file_index, script_index)
+
+                    for sc_line in cells[script_index]:
+                        for line in cells[file_index]:
+                            sc_line_ind = cells[script_index]
+                            sc_line_ind = sc_line_ind.index(sc_line)
+                            line_ind = cells[file_index]
+                            line_ind = line_ind.index(line)
+
+                            ratios = {(sc_line_ind, line_ind): (
+                                len(sc_line), len(line), distance.levenshtein(sc_line, line))}
+                            script_cells.append(ratios)
+
+                    scripts[keys[script_index] + ": " + keys[file_index]] = script_cells
+                file_index += 1
+
+            traversed.append(script_index)
+            script_index += 1
+
+        return scripts
+
+
 compare = Comparison()
-print(compare.script_cells_compare())
+# print(compare.cells_compare())
+print(compare.scripts_compare())
