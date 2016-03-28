@@ -6,7 +6,7 @@ from IPythonProject.comparison import Comparison
 
 class ComparisonAnalysis:
 
-    def __init__(self):  # , name):
+    def __init__(self):
         pass
 
     def scripts_equality(self):

@@ -1,3 +1,4 @@
+import json
 import os
 import distance as distance
 from IPythonProject.license_analysis import LicenseAnalysis
@@ -113,7 +114,33 @@ class Comparison:
 
         return scripts
 
+    def repos_scripts(self):
+        repo_path = os.path.dirname(os.getcwd())
+        find_file = repo_path + "\IPythonProject\\NewGitHubProjects2"
+        repos_dict = {}
+
+        for dir in os.listdir(find_file):
+            scripts = []
+            for root, dirs, files in os.walk(find_file + "\\" + dir):
+                for file in files:
+                    if 'π' in file:
+                        file = file.replace('π', str('π'.encode("utf-8")))
+
+                    if ".ipynb" in file and os.path.join(root, file) is not None:
+                        found_path = os.path.join(root, file)
+
+                        with open(found_path, encoding="utf8") as data_file:
+                            file_json = json.load(data_file)
+                        data_file.close()
+                        scripts.append(file_json)
+
+            if scripts != []:
+                repos_dict[dir] = scripts
+
+        return repos_dict
+
 
 compare = Comparison()
 # print(compare.cells_compare())
-print(compare.scripts_compare())
+# print(compare.scripts_compare())
+print(compare.repos_scripts())
