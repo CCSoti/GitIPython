@@ -16,6 +16,7 @@ class ComparisonAnalysis:
         keys_scripts = scripts.keys()
         values_scripts = scripts.values()
         values_scripts = values_scripts
+        count_ratios=0
 
         for ratio in values_scripts:
             keys_tuples = ratio.keys()
@@ -27,17 +28,14 @@ class ComparisonAnalysis:
                 min_value = min(difference[0], difference[1])
                 max_value = max(difference[0], difference[1])
 
-                # if comparison == 0 or comparison == 1:
-                #     if max_value != min_value and max_value - min_value <= max_value/2:
-                #         print(tuple, difference)
-                #     elif max_value == min_value and max_value != 1:
-                #         print(tuple, difference)
-
-                if comparison == 0:
-                    print(tuple, difference)
+                if comparison == 0 or comparison == 1:
+                    if max_value != min_value and max_value - min_value <= max_value/2:
+                        print(tuple, difference)
+                    elif max_value == min_value and max_value != 1:
+                        print(tuple, difference)
 
         return
 
 
-compAnalysis = ComparisonAnalysis()
-compAnalysis.scripts_equality()
+# compAnalysis = ComparisonAnalysis()
+# compAnalysis.scripts_equality()

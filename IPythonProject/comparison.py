@@ -101,14 +101,17 @@ class Comparison:
                 if file_index != script_index and script_index not in traversed:
 
                     for sc_line in cells[script_index]:
+                        lines_diff = []
                         for line in cells[file_index]:
                             sc_line_ind = cells[script_index]
                             sc_line_ind = sc_line_ind.index(sc_line)
                             line_ind = cells[file_index]
                             line_ind = line_ind.index(line)
 
-                            ratios[(sc_line_ind, line_ind)] = (
-                                len(sc_line), len(line), distance.levenshtein(sc_line, line))
+                            lines_diff.append((
+                                len(sc_line), len(line), distance.levenshtein(sc_line, line)))
+
+                        ratios[(script_index, file_index)] = lines_diff
 
                     scripts[keys[script_index] + ": " + keys[file_index]] = ratios
                 file_index += 1
@@ -151,9 +154,9 @@ class Comparison:
         return scripts
 
 
-# compare = Comparison()
+compare = Comparison()
 # print(compare.cells_compare())
-# ipynb_dict = compare.get_cells_input()
-# print(compare.scripts_compare(ipynb_dict))
+ipynb_dict = compare.get_cells_input()
+print(compare.scripts_compare(ipynb_dict))
 # print(compare.repos_scripts())
 # print(compare.repos_compare())
