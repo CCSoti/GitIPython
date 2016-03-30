@@ -38,7 +38,7 @@ class LicenseAnalysis:
             print(tre.name)
 
     def check_ipynb(self, find_file):
-        ipynb_paths = []
+        ipynb_files = []
         ipynb_json = []
         for root, dirs, files in os.walk(find_file):
             for file in files:
@@ -47,7 +47,7 @@ class LicenseAnalysis:
 
                 if ".ipynb" in file and os.path.join(root, file) is not None:
                     found_path = os.path.join(root, file)
-                    ipynb_paths.append(found_path)
+                    ipynb_files.append(file)
                     with open(found_path, encoding="utf8") as data_file:
                         file_json = json.load(data_file)
                     data_file.close()
@@ -61,7 +61,7 @@ class LicenseAnalysis:
                     #             if ".ipynb" in file2 and os.path.join(root, file2) is not None:
                     #                 found_path = os.path.join(root2, file2)
                     #                 ipynb_paths.append(found_path)
-        return ipynb_paths, ipynb_json
+        return ipynb_files, ipynb_json
 
     def traverse_projects(self):
         repo_path = os.path.dirname(os.getcwd())
@@ -136,4 +136,4 @@ ipynb_paths, ipynb_json = repo.check_ipynb(find_file)
 # print("Cells ratio(code/no code): ", all_ratios, "\n")
 
 # print(repo.scripts_execution(find_file))
-print(repo.outputs(ipynb_json))
+# print(repo.outputs(ipynb_json))

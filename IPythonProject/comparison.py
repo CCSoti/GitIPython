@@ -154,9 +154,9 @@ class Comparison:
         return scripts
 
 
-compare = Comparison()
+# compare = Comparison()
 # print(compare.cells_compare())
-ipynb_dict = compare.get_cells_input()
-print(compare.scripts_compare(ipynb_dict))
+# ipynb_dict = compare.get_cells_input()
+# print(compare.scripts_compare(ipynb_dict))
 # print(compare.repos_scripts())
 # print(compare.repos_compare())
