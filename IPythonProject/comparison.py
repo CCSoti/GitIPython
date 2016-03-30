@@ -94,7 +94,7 @@ class Comparison:
         file_index = 0
 
         while script_index < len(cells):
-            script_cells = []
+            ratios = {}
 
             while file_index < len(cells):
 
@@ -107,13 +107,10 @@ class Comparison:
                             line_ind = cells[file_index]
                             line_ind = line_ind.index(line)
 
-                            # print(type(sc_line), type(line))
+                            ratios[(sc_line_ind, line_ind)] = (
+                                len(sc_line), len(line), distance.levenshtein(sc_line, line))
 
-                            ratios = {(sc_line_ind, line_ind): (
-                                len(sc_line), len(line), distance.levenshtein(sc_line, line))}
-                            script_cells.append(ratios)
-
-                    scripts[keys[script_index] + ": " + keys[file_index]] = script_cells
+                    scripts[keys[script_index] + ": " + keys[file_index]] = ratios
                 file_index += 1
 
             traversed.append(script_index)
@@ -154,9 +151,9 @@ class Comparison:
         return scripts
 
 
-compare = Comparison()
+# compare = Comparison()
 # print(compare.cells_compare())
 # ipynb_dict = compare.get_cells_input()
 # print(compare.scripts_compare(ipynb_dict))
 # print(compare.repos_scripts())
-print(compare.repos_compare())
+# print(compare.repos_compare())
