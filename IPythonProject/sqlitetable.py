@@ -2,6 +2,8 @@ import json
 import os
 import sqlite3
 
+import sys
+
 from IPythonProject.comparison import Comparison
 
 
@@ -64,9 +66,8 @@ class SqliteTable():
 
         # Insert a row of data
         table_rows = self.traverse_scripts()
-        for one_row in table_rows:
-            c.execute("INSERT INTO ipython VALUES (?,?,?,?,?)", one_row)
-        # (''' + row[0] + ''',''' + row[1] + ''',''' + row[2] + ''',''' + row[3] + ''',''' + row[4] + ''')''')
+        # for one_row in table_rows:
+        #     c.execute("INSERT INTO ipython VALUES (?,?,?,?,?)", one_row)
 
         # Save (commit) the changes
         conn.commit()
