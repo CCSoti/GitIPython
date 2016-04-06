@@ -2,17 +2,39 @@ import json
 import os
 import sqlite3
 
-import sys
-
-from IPythonProject.comparison import Comparison
-
 
 class SqliteTable():
     def __init__(self):  # , name):
         pass
 
+    def traverse_file(self, script):
+        if "worksheets" in script:
+            cells = script["worksheets"][0]["cells"]
+        else:
+            cells = script["cells"]
+
+        script_cell_input = []
+        for cell in cells:
+
+            if cell["cell_type"] == "code":
+                if "input" in cell.keys():
+                    cell_input = cell["input"]
+                else:
+                    cell_input = cell["source"]
+            else:
+                cell_input = cell["source"]
+
+                # cell_input_strip = []
+                # for line in cell_input:
+                #     line = line.split(" ")
+                #     for word in line:
+                #         cell_input_strip.append(word)
+
+            script_cell_input.append(cell_input)
+
+        return script_cell_input
+
     def repos_scripts(self):
-        compare = Comparison()
         repo_path = os.path.dirname(os.getcwd())
         find_file = repo_path + "\IPythonProject\\NewGitHubProjects2"
         repos_dict = {}
@@ -30,7 +52,7 @@ class SqliteTable():
                         with open(found_path, encoding="utf8") as data_file:
                             file_json = json.load(data_file)
                         data_file.close()
-                        script_input = compare.traverse_file(file_json)
+                        script_input = self.traverse_file(file_json)
                         script_dict[file] = script_input
 
             if script_dict != {}:
