@@ -1,3 +1,8 @@
+#Project Plan
+
+Author SS.
+
+
 RQ1: Are repositories stand alone, what are the iPython communities/interdependencies?
 
 Analysis: cloning between scripts
@@ -23,3 +28,5 @@ Analysis: cloning between scripts
  2. Number of contributors.
  3. Start date and end date.
  4. Relations between the features (graphs).
+
+
