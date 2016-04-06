@@ -1,9 +1,7 @@
-import codecs
 import json
-import os
 import sys
-from git import Repo
-from IPythonProject.wrapper import RepositoryWrapper
+import os
+
 from IPythonProject.readability import ReadabilityAnalysis
 from subprocess import *
 
@@ -13,29 +11,29 @@ class LicenseAnalysis:
         # self.name = name
         pass
 
-    def create_repo(self):
-        temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-        path_project = temp_path + "\\NewGitHubProjects2" + "\\" + self.name
-        print("Path: " + path_project)
+    # def create_repo(self):
+    #     temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
+    #     path_project = temp_path + "\\NewGitHubProjects2" + "\\" + self.name
+    #     print("Path: " + path_project)
+    #
+    #     repo = Repo.init(path_project)
+    #     return repo
 
-        repo = Repo.init(path_project)
-        return repo
-
-    def traverse_repo(self):
-        repo = self.create_repo()
-
-        # explanation for the entries http://gitpython.readthedocs.org/en/stable/reference.html#module-git.index.base
-        repo_dict = repo.index.entries
-        # print(repo.untracked_files)
-        # print(repo.index.entries)
-
-        tree = repo.heads.master.commit.tree
-        print(len(tree))
-        # print(tree.blobs[0].name)
-        for blob in tree.blobs:
-            print(blob.name)
-        for tre in tree:
-            print(tre.name)
+    # def traverse_repo(self):
+    #     repo = self.create_repo()
+    #
+    #     # explanation for the entries http://gitpython.readthedocs.org/en/stable/reference.html#module-git.index.base
+    #     repo_dict = repo.index.entries
+    #     # print(repo.untracked_files)
+    #     # print(repo.index.entries)
+    #
+    #     tree = repo.heads.master.commit.tree
+    #     print(len(tree))
+    #     # print(tree.blobs[0].name)
+    #     for blob in tree.blobs:
+    #         print(blob.name)
+    #     for tre in tree:
+    #         print(tre.name)
 
     def check_ipynb(self, find_file):
         ipynb_files = []
@@ -47,20 +45,12 @@ class LicenseAnalysis:
 
                 if ".ipynb" in file and os.path.join(root, file) is not None:
                     found_path = os.path.join(root, file)
-                    ipynb_files.append(file)
+                    ipynb_files.append(found_path)
                     with open(found_path, encoding="utf8") as data_file:
                         file_json = json.load(data_file)
                     data_file.close()
                     ipynb_json.append(file_json)
 
-                    # for dir in dirs:
-                    #     for root2, dirs2, files2 in os.walk(find_file + "\\" + dir):
-                    #         for file2 in files2:
-                    #             if 'π' in file2:
-                    #                 file2 = file2.replace('π', str('π'.encode("utf-8")))
-                    #             if ".ipynb" in file2 and os.path.join(root, file2) is not None:
-                    #                 found_path = os.path.join(root2, file2)
-                    #                 ipynb_paths.append(found_path)
         return ipynb_files, ipynb_json
 
     def traverse_projects(self):
@@ -100,29 +90,6 @@ class LicenseAnalysis:
             code_yes, code_no = 0, 0
         return all_ratios
 
-    # checking if a IPython script can be executed from the subprocess model
-    def scripts_execution(self, filename):
-        cmd = 'python ' + filename
-        result = Popen(cmd, shell=True, stdout=PIPE)
-        out, err = result.communicate()
-        return result.returncode, out, err
-
-    # checking the outputs -number of errors in a script
-    def outputs(self, ipynb_json):
-        outputs = []
-        for script in ipynb_json:
-            if "worksheets" in script:
-                cells = script["worksheets"][0]["cells"]
-            else:
-                cells = script["cells"]
-
-            for cell in cells:
-                cell_type = cell["outputs"]
-                if cell_type is not []:
-                    for out in cell_type:
-                        outputs.append(out["output_type"])
-
-        return outputs
 
 
 repo = LicenseAnalysis()
@@ -135,5 +102,4 @@ ipynb_paths, ipynb_json = repo.check_ipynb(find_file)
 # all_ratios = repo.cell_types(ipynb_json)
 # print("Cells ratio(code/no code): ", all_ratios, "\n")
 
-# print(repo.scripts_execution(find_file))
-# print(repo.outputs(ipynb_json))
+
