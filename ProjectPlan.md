@@ -1,6 +1,6 @@
 #Project Plan
 
-Author SS.
+#Author SS.
 
 
 RQ1: Are repositories stand alone, what are the iPython communities/interdependencies?
