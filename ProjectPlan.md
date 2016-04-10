@@ -7,7 +7,7 @@ RQ1: Are repositories stand alone, what are the iPython communities/interdepende
 
 Analysis: cloning between scripts
 
- 1. Extract all code cells from iPython scripts.
+ 1. Extract all code cells from iPython scripts. (run on test sample for Time:  1751.1386229991913)
  2. Perform a pairwise string comparison between cells.
  3. Look for clusters of similar cells.
  4. Look for clusters of related scripts.
@@ -19,6 +19,7 @@ Analysis: cloning between scripts
 
  1. Are the scripts executable - any errors, types of errors?
  2. Do they have LICENSE or README file?
+    2.1. Readability analysis over these files.
  3. How much code vs. text(markdown) each script contain?
  4. The most used Python packages in the repositories
 
