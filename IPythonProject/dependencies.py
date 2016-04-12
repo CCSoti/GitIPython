@@ -1,6 +1,7 @@
 import sqlite3
-
 import time
+
+import distance
 
 
 class Dependencies():
@@ -15,7 +16,16 @@ class Dependencies():
         :param cell2: a list of lines of code
         :return:
         """
-        pass
+        sum = 0
+        count_differences = 0
+        for c1 in cell1:
+            for c2 in cell2:
+                difference = distance.nlevenshtein(c1, c2)
+                sum += difference
+                count_differences += 1
+
+        average = sum/count_differences
+        return average
 
     def extract_cell(self, conn, repository, script, cell):
         """
@@ -31,9 +41,6 @@ class Dependencies():
         list_query_result = []
         for line in query_result:
             list_query_result.append(line[0])
-            if line[0] == "plot_wiggle(trc,figsize=[10,10],perc=99)":
-                print("Fine.")
-        # print(list(query_result))
         return list_query_result
 
     def extract_cells_from_script(self, conn, repository, script):
@@ -44,7 +51,10 @@ class Dependencies():
         cells_result = c.execute(query_template, (repository[0], script[0]))
         result = {}
         for cell in cells_result:
-            result[cell] = self.extract_cell(conn, repository, script, cell)
+            if cell in result:
+                result[cell[0]].append(self.extract_cell(conn, repository, script, cell))
+            else:
+                result[cell[0]] = self.extract_cell(conn, repository, script, cell)
 
         return result
 
@@ -58,9 +68,9 @@ class Dependencies():
         result = {}
         for script in script_result:
             if script in result:
-                result[script].update(self.extract_cells_from_script(conn, repository, script))
+                result[script[0]].update(self.extract_cells_from_script(conn, repository, script))
             else:
-                result[script] = self.extract_cells_from_script(conn, repository, script)
+                result[script[0]] = self.extract_cells_from_script(conn, repository, script)
 
         return result
 
@@ -75,24 +85,38 @@ class Dependencies():
         count = 0
         for repository in repository_result:
             if repository in result:
-                result[repository].update(self.extract_cells_from_repository(conn, repository))
+                result[repository[0]].update(self.extract_cells_from_repository(conn, repository))
             else:
-                result[repository] = self.extract_cells_from_repository(conn, repository)
+                result[repository[0]] = self.extract_cells_from_repository(conn, repository)
             count += 1
             print(count, "Done", repository)
         return result
 
     def compare_cells_within__each_script(self, conn):
+        conn2 = sqlite3.connect('compare_cells.db')
+        c2 = conn2.cursor()
+        # Create table
+        c2.execute('''CREATE TABLE compare_cells(repository TEXT, script TEXT, cell1 INT, cell2 int, similarity real)''')
+
         repositories = self.extract_cells(conn)
 
-        result = {}
+        # result = {}
 
         for repository in repositories:
-            for script in repository:
-                for cell1 in script:
-                    for cell2 in script:
-                        difference = self.cell_difference(cell1, cell2)
-                        print(difference)
+            repo_values = repositories[repository]
+            # script_dict = {}
+            for script in repo_values:
+                # script_list = []
+                script_values = repo_values[script]
+                for cell1 in script_values:
+                    for cell2 in script_values:
+                        difference = self.cell_difference(script_values[cell1], script_values[cell2])
+                        print((repository, script, cell1, cell2, difference))
+                        c2.execute("INSERT INTO compare_cells VALUES (?,?,?,?,?)", (repository, script, cell1, cell2, difference))
+
+        conn2.commit()
+        conn2.close()
+
 
     def compare_all_cells_in_all_repositories(self, conn):
         repositories = self.extract_cells(conn)
@@ -108,7 +132,8 @@ class Dependencies():
     def main(self):
         conn = sqlite3.connect('ipython.db')
         start_time = time.time()
-        print(self.extract_cells(conn))
+        # print(self.extract_cells(conn))
+        print(self.compare_cells_within__each_script(conn))
         end_time = time.time()
         print("Time: ", end_time - start_time)
 
