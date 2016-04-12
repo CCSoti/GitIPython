@@ -110,9 +110,10 @@ class Dependencies():
                 script_values = repo_values[script]
                 for cell1 in script_values:
                     for cell2 in script_values:
-                        difference = self.cell_difference(script_values[cell1], script_values[cell2])
-                        print((repository, script, cell1, cell2, difference))
-                        c2.execute("INSERT INTO compare_cells VALUES (?,?,?,?,?)", (repository, script, cell1, cell2, difference))
+                        if cell1 != cell2:
+                            difference = self.cell_difference(script_values[cell1], script_values[cell2])
+                            print((repository, script, cell1, cell2, difference))
+                            c2.execute("INSERT INTO compare_cells VALUES (?,?,?,?,?)", (repository, script, cell1, cell2, difference))
 
         conn2.commit()
         conn2.close()
