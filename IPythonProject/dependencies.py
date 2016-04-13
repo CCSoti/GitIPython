@@ -110,31 +110,76 @@ class Dependencies():
                 script_values = repo_values[script]
                 for cell1 in script_values:
                     for cell2 in script_values:
-                        if cell1 != cell2:
+                         if cell1 != cell2:
                             difference = self.cell_difference(script_values[cell1], script_values[cell2])
                             print((repository, script, cell1, cell2, difference))
                             c2.execute("INSERT INTO compare_cells VALUES (?,?,?,?,?)", (repository, script, cell1, cell2, difference))
+
 
         conn2.commit()
         conn2.close()
 
 
+    def compare_all_cells_in_all_scripts(self, conn):
+        conn2 = sqlite3.connect('compare_scripts.db')
+        c2 = conn2.cursor()
+        # Create table
+        c2.execute('''CREATE TABLE compare_scripts(repository_one TEXT, script_one TEXT, script_second TEXT, cell1 INT, cell2 INT, similarity REAL)''')
+
+        repositories = self.extract_cells(conn)
+        check_list = []
+
+        for repository in repositories:
+            repo_values = repositories[repository]
+            for script1 in repo_values:
+                script_values1 = repo_values[script1]
+                for script2 in repo_values:
+                    script_values2 = repo_values[script2]
+                    if script1 != script2:
+                        if (script1, script2) not in check_list:
+                            for cell1 in script_values1:
+                                for cell2 in script_values2:
+                                    difference = self.cell_difference(script_values1[cell1], script_values2[cell2])
+                                    print((repository, script1, script2, cell1, cell2, difference))
+                                    c2.execute("INSERT INTO compare_scripts VALUES (?,?,?,?,?,?)", (repository, script1, script2, cell1, cell2, difference))
+
+                            check_list.append((script1, script2))
+
+
+
     def compare_all_cells_in_all_repositories(self, conn):
+        conn2 = sqlite3.connect('compare_repositories.db')
+        c2 = conn2.cursor()
+        # Create table
+        c2.execute('''CREATE TABLE compare_repositories(repository_one TEXT, repository_second TEXT, script_one TEXT, script_second TEXT, cell1 INT, cell2 INT, similarity REAL)''')
+
         repositories = self.extract_cells(conn)
 
         for repository1 in repositories:
-            for script1 in repository1:
-                for cell1 in script1:
+            repo_values1 = repositories[repository1]
+            for script1 in repo_values1:
+                script_values1 = repo_values1[script1]
+                for cell1 in script_values1:
                     for repository2 in repositories:
-                        for script2 in repository2:
-                            for cell2 in script2:
-                                difference = self.cell_difference(cell1, cell2)
+                        repo_values2 = repositories[repository2]
+                        if repository1 != repository2:
+                            for script2 in repo_values2:
+                                script_values2 = repo_values2[script2]
+                                for cell2 in script_values2:
+                                    difference = self.cell_difference(script_values1[cell1], script_values2[cell2])
+                                    print((repository1, repository2, script1, script2, cell1, cell2, difference))
+                                    c2.execute("INSERT INTO compare_repositories VALUES (?,?,?,?,?,?,?)",(repository1, repository2, script1, script2, cell1, cell2, difference))
+
+        conn2.commit()
+        conn2.close()
 
     def main(self):
         conn = sqlite3.connect('ipython.db')
         start_time = time.time()
         # print(self.extract_cells(conn))
-        print(self.compare_cells_within__each_script(conn))
+        # print(self.compare_cells_within__each_script(conn))
+        print(self.compare_all_cells_in_all_repositories(conn))
+        # print(self.compare_all_cells_in_all_scripts(conn))
         end_time = time.time()
         print("Time: ", end_time - start_time)
 

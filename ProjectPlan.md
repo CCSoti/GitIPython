@@ -9,7 +9,7 @@ Analysis: cloning between scripts
 
  1. Extract all code cells from iPython scripts. (run on test sample for Time:  1751.1386229991913)
  2. Perform a pairwise string comparison between cells.
- 3. Look for clusters of similar cells.
+ 3. Look for clusters of similar cells. (Time:  1560.592180967331)
  4. Look for clusters of related scripts.
  5. Look for clusters of related projects.
  6. Are there commonalities between the related projects (e.g. similar authors).  Is there a cloning relationship between the repositories (common parent?).
