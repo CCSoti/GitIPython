@@ -16,16 +16,16 @@ class Dependencies():
         :param cell2: a list of lines of code
         :return:
         """
-        sum = 0
-        count_differences = 0
-        for c1 in cell1:
-            for c2 in cell2:
-                difference = distance.nlevenshtein(c1, c2)
-                sum += difference
-                count_differences += 1
+        cell1_concatenation = ""
+        cell2_concatenation = ""
+        for line_in_cell1 in cell1:
+            cell1_concatenation += line_in_cell1
+        for line_in_cell2 in cell2:
+            cell2_concatenation += line_in_cell2
 
-        average = sum/count_differences
-        return average
+        difference = distance.nlevenshtein(cell1_concatenation, cell2_concatenation)
+
+        return difference
 
     def extract_cell(self, conn, repository, script, cell):
         """
