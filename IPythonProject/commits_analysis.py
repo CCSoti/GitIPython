@@ -136,6 +136,20 @@ class CommitsAnalysis():
 
         return commits_dates_list, latest_commits_dates_list
 
+    def analyse_the_latest_commits(self):
+        """Method for getting the percentage of how many repositories which last activity is in 2015 or 2016.
+        :return:
+            Float number: represents a percentage."""
+
+        commits_dates_list, latest_commits_dates_list = self.get_date_of_latest_commit_in_repository()
+        count_close_years = []
+        for latest_commit in latest_commits_dates_list:
+            if latest_commit[0] == 2015 or latest_commit[0] == 2016:
+                count_close_years.append((latest_commit[0]))
+
+        average_of_close_years = (len(count_close_years)/len(latest_commits_dates_list))*100
+
+        return average_of_close_years
 
 commits_analysis = CommitsAnalysis()
-commits_analysis.get_date_of_latest_commit_in_repository()
+print(commits_analysis.analyse_the_latest_commits())
