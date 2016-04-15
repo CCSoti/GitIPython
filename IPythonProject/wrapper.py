@@ -27,25 +27,6 @@ class RepositoryWrapper():
             # print(repo.index.entries)
 
 
-def get_num_commits():
-    temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
-    path_project = temp_path + "\\NewGitHubProjects\\"
-    num_commits = []
-
-    # for dirs in os.listdir(path_project):
-    #     print(dirs)
-
-    for dir in os.listdir(path_project):
-        for d in os.listdir(path_project + "\\" + dir):
-            print("Directory: ", d)
-            repo = Repo(path_project + "\\" + dir + "\\" + d, search_parent_directories=True)
-            print(repo.active_branch.is_valid())
-            if repo.active_branch.is_valid():
-                commits = list(repo.iter_commits())
-                num_commits.append(commits)
-
-    return num_commits
-
 
 # rw = RepositoryWrapper()
 # print(get_num_commits())
