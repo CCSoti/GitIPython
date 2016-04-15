@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from statistics import stdev, mean
+
+import time
 from git import *
 
 """
@@ -97,6 +99,43 @@ class CommitsAnalysis():
         plt.subplots_adjust(left=0.15)
         plt.show()
 
+    def get_date_of_latest_commit_in_repository(self):
+        """Method for getting the date of the latest commit in a repository..
+        :return:
+            Date Object: Date"""
+        temp_path = os.path.dirname(os.path.realpath("IPythonProject"))
+        path_project = temp_path + "\\NewGitHubProjects\\"
+        latest_commits = {}
+
+        for dir in os.listdir(path_project):
+            for d in os.listdir(path_project + "\\" + dir):
+                repo = Repo(path_project + "\\" + dir + "\\" + d, search_parent_directories=True)
+                # print(time.strftime("%a, %d %b %Y %H:%M", time.gmtime(repo.head.commit.committed_date)))
+                if repo.active_branch.is_valid():
+                    commits = list(repo.iter_commits())
+                    latest_commits.update({dir: commits})
+
+        commits_dates_list = []
+        latest_commits_dates_list = []
+        for repo in latest_commits:
+            commits_list = latest_commits[repo]
+
+            commits_dates = {}
+            for com in commits_list:
+                com_time = time.strftime("%a, %d %b %Y %H:%M", time.gmtime(com.committed_date))
+                com_date = time.strptime(com_time, "%a, %d %b %Y %H:%M")
+                commits_dates.update({com_time: com_date})
+
+            first_commit_date = min(commits_dates.values())
+            latest_commit_date = max(commits_dates.values())
+            first_commit = list(commits_dates.keys())[list(commits_dates.values()).index(first_commit_date)]
+            latest_commit = list(commits_dates.keys())[list(commits_dates.values()).index(latest_commit_date)]
+
+            commits_dates_list.append([first_commit_date, latest_commit_date])
+            latest_commits_dates_list.append(latest_commit_date)
+
+        return commits_dates_list, latest_commits_dates_list
+
 
 commits_analysis = CommitsAnalysis()
-commits_analysis.create_histogram_for_standard_deviation()
+commits_analysis.get_date_of_latest_commit_in_repository()
