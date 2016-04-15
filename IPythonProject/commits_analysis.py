@@ -1,16 +1,18 @@
 import csv
 import os
-from statistics import stdev
-
+import numpy as np
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+from statistics import stdev, mean
 from git import *
 
 """
-Python class for tracking the activity of repositories, by the number of commits.
+Python class for tracking the activity of repositories, by analysis of commits.
 :result: counting number of commits in a repository.
 """
 
-class CommitsAnalysis():
 
+class CommitsAnalysis():
     def __init__(self):
         pass
 
@@ -55,7 +57,7 @@ class CommitsAnalysis():
         sum = 0
         for commits in number_of_commits:
             sum += commits[1]
-        average_commit = sum/len(number_of_commits)
+        average_commit = sum / len(number_of_commits)
 
     def calculate_standard_deviation(self):
         """Method for calculating the standard deviation of all commits.
@@ -69,6 +71,32 @@ class CommitsAnalysis():
         standard_deviation = stdev(commits_values)
         return standard_deviation
 
+    def create_histogram_for_standard_deviation(self):
+        """Method for showing the standard deviation of the number of commits in
+        all repositories.
+        :return:
+            Matplotlib Object: histogram"""
+
+        commits_values = []
+        number_of_commits = self.get_number_of_commits()
+        for commit in number_of_commits:
+            commits_values.append(commit[1])
+
+        mean_value = mean(commits_values)
+        standard_deviation = self.calculate_standard_deviation()
+        num_bins = 50
+        n, bins, patches = plt.hist(commits_values, num_bins, normed=1, facecolor='green', alpha=0.5)
+        # add a 'best fit' line
+        y = mlab.normpdf(bins, mean_value, standard_deviation)
+        plt.plot(bins, y, 'r--')
+        plt.xlabel('Number of Commits')
+        plt.ylabel('Probability')
+        plt.title(r'Histogram of number of commits')
+
+        # Tweak spacing to prevent clipping of ylabel
+        plt.subplots_adjust(left=0.15)
+        plt.show()
+
 
 commits_analysis = CommitsAnalysis()
-print(commits_analysis.calculate_standard_deviation())
+commits_analysis.create_histogram_for_standard_deviation()
