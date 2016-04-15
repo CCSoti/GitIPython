@@ -1,17 +1,16 @@
+"""
+Python class for tracking the activity of repositories, by analysis of commits.
+:result: counting number of commits in a repository.
+"""
+
 import csv
 import os
-import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from statistics import stdev, mean
 
 import time
 from git import *
-
-"""
-Python class for tracking the activity of repositories, by analysis of commits.
-:result: counting number of commits in a repository.
-"""
 
 
 class CommitsAnalysis():
@@ -31,6 +30,7 @@ class CommitsAnalysis():
         for dir in os.listdir(path_project):
             for d in os.listdir(path_project + "\\" + dir):
                 repo = Repo(path_project + "\\" + dir + "\\" + d, search_parent_directories=True)
+                # print(repo.)
                 if repo.active_branch.is_valid():
                     commits = list(repo.iter_commits())
                     num_commits.append([dir, len(commits)])
@@ -152,4 +152,4 @@ class CommitsAnalysis():
         return average_of_close_years
 
 commits_analysis = CommitsAnalysis()
-print(commits_analysis.analyse_the_latest_commits())
+print(commits_analysis.get_number_of_commits())
