@@ -19,6 +19,9 @@
 \usepackage[a4paper]{geometry}
 \usepackage[breaklinks,colorlinks,citecolor=black,urlcolor=black,linkcolor=black,pdfpagelabels=false,pdfusetitle]{hyperref}
 \usepackage{flushend} % Automatically balances columns on the last page
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\usepackage{mdframed}
 
 % Settings for code listing environment
 \definecolor{lightgray}{rgb}{.9,.9,.9}
@@ -475,7 +478,7 @@ breaklines=true,
 %    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
 %%    \global\@topnum\z@   % Prevents figures from going at top of page.
    \twocolumn[
-   {\hfill \includegraphics[width=60mm]{images/CompSci_colour.pdf}}
+   {\hfill \includegraphics[width=60mm]{example/CompSci_colour.pdf}}
    \begin{center}%
    \line(1,0){500} \vskip .2cm
      {\ttlfnt \@title \par} \vskip .3cm

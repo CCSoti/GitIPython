@@ -1,0 +1,106 @@
+\subsection{IPython and the Scientific Method}
+
+Exploratory analysis in a scientific environment requires a solid interactive environment \cite{ipythonArticle}. IPython has become an effective, easy to use and popular tool for interactions with data. It contains features that are supporting scientists in there researches - e.g. reproducibility and collaboration. 
+
+As mentioned in the background section - "Software in science", software is closely connected with the Scientific Method\cite{sciMethod}. The example given above is associated with climate data set. Steve Easterbrook and Timothy Johns \cite{easterbrook2009engineering} are analysing how scientists are applying the technology in terms of software quality, correctness, managing tasks, testing and collaboration. The approach taken to conduct the research is following several steps - Correctness, Reproducibility and Replication, Shared Understanding, Prioritization and Debugging.
+
+This section is describing the steps from the second approach of IPython Observatory to investigate the usage of IPython Notebook. The stages managed and analysed in the Scientific Method have motivated the evaluation of this research.
+
+
+\vspace{5mm}
+\begin{mdframed}
+\vspace{1px}
+\textbf{Step 1:} Correctness
+\vspace{1px}
+\end{mdframed}
+\vspace{2mm}
+
+There are two aspects that this part of the analysis has to consider for the correctness of the IPython projects - the results from the analysis must be tested and logically proven to be accurate and precise, and everything should be documented, so that researchers can understand and examine the value of each result. 
+
+The approach for completing the first point is investigation over the tests made for each script of a repository. Tests are usually written as unittests, on Python. Investigation over the tests of a project can count how many repositories has some tests implementation and, also, what is the test coverage of the functionality.
+
+---> Mine
+
+Description of the conduction and values of the results, is a way to record and present the quality of research. Usually that is achieved by keeping up-to-date README file, usage of easy to understand naming conventions in the code and appropriate amount of comments. The documentation of a project is important not only for quality of the analysis result, but also, for the reproducibility and replication of results - when other software developers or researchers want to use the specific repository, they need to be aware with all features in it. IPython observatory is exploring how many repositories have README file and is investigating how easy are they for understanding by using several algorithms for assessing readability. Future recommendations for analysis include text mining techniques for identifying the content of a document. 
+
+
+\vspace{5mm}
+\begin{mdframed}
+\vspace{1px}
+\textbf{Step 2:} Reproducibility and Replication
+\vspace{1px}
+\end{mdframed}
+\vspace{2mm}
+
+Reproducibility as explained in Johansson's paper \cite{johansson2014introduction} is "the results obtained from numerical simulations should be reproducible with an independent implementation of the method, or using a different method altogether." It is one of the main principles of the scientific method\cite{cohen2013introduction} and is the ability of a project or part of it to be duplicated, either by the same researcher or by someone else working independently\cite{reproducibilityWiki}. When an experiment is reproduced this means it is replicated.
+
+In the area of scientific computations reproducibility is one of the most important aspects. Researches are conducted, reused and modified by variety of scientists from different areas of study. Duplication of efficient results is critical for tests, experiments and studies.
+
+Each IPython script is considered to be a stand alone piece of code or text. They present research or software ideas and their visualizations. However, an entire script or part of it might be reused in another script or even a project. The main idea of the research is analyse how IPython is used from scientists and among them.
+
+One approach for analysis is to find communities between cells - part of a script, scripts and repositories. The idea is to indicate the level of reproducibility between IPython projects on GitHub and to cluster repositories into groups. IPython Observatory is contributing to the field of Mining Software Repositories, by finding inter-dependencies between projects. 
+
+The approach of the technique, goes through the following steps: 
+
+\begin{description}
+\item [Extracting of all the code cells from IPython scripts] 
+
+Going through all repositories, all scripts, all cells in the scripts, extracting cell's lines and storing them into a SQLite database\cite{sqlite3}. It contains table with attributes - repository's name, script's name, cell's number, line's number, line's content.
+
+\item[Perform a pairwise string comparison between cells] 
+
+This functionality is used in the next three steps. It extract the lines of each cell from the already created database and compares two cells' lines sets with the Normalised Levenshtein algorithm implemented in the Python "distance" package\cite{distance}, which is a string metric for measuring the difference between two sequences. It presents comparison between two words as the minimum number of single-character edits - e.g. insertion, deletion or substitution\cite{levenstein}. The normalised distance is represented as a float number between 0 and 1, where 0 means equal and 1 completely different. Using this algorithm the two cells will be compared as sequences of lines.
+
+\item [Look for clusters of similar cells]
+
+Iterating through each repository, each script in it and comparing each cell with another cell from the same script in the same repository. 
+
+\item [Look for clusters of related scripts]
+
+Iterating through each repository, each script in it and comparing each cell with another cell from different scripts in the same repository.
+
+\item [Look for clusters of related projects] 
+
+Iterating through each repository, each script in it and comparing each cell with another cell from different scripts in different repositories. 
+
+\end{description}
+
+The last three steps are saved into different SQLite\cite{sqlite3} tables. The limitations and issues met with the process are connected with the amount of time for performing the technique over 866 repositories, which are exhausting 19GB of memory. The code was tested on a sample data with - for two repositories, it was executing 29 minutes and 18 second, and for ten repositories - ... ---> Mine. The algorithm will perform on all extracted repositories for 210 hours, which is around 8 days and 7 hours. Considering that we need 8 days for the execution of only one of the three iteration(the last three steps from the list above), it means that we will need 24 days for the three of them. A future development idea is optimisation of the process. 
+
+
+\vspace{5mm}
+\begin{mdframed}
+\vspace{1px}
+\textbf{Step 3:} Shared Understanding
+\vspace{1px}
+\end{mdframed}
+\vspace{2mm}
+
+For analysing the representation and knowledge of projects, we can connect this aspect with the documentation analysis over README file, explained in the first aspect - Correctness.
+
+
+\vspace{5mm}
+\begin{mdframed}
+\vspace{1px}
+\textbf{Step 4:} Prioritization
+\vspace{1px}
+\end{mdframed}
+\vspace{2mm}
+
+This step consists of organising requirements and tasks and classifying which of them are achievable or worth
+implementing for the project. It motivates the project to prioritize scripts depending on their content - some scripts contain only text, some - only code and others - both. If scripts in a repository are consisting mainly code, this means the project is likely to be a software project. This step is supporting some of the analysis in the previous section\ref{subsec:mining}.
+
+--> Mine
+
+\vspace{5mm}
+\begin{mdframed}
+\vspace{1px}
+\textbf{Step 5:} Debugging
+\vspace{1px}
+\end{mdframed}
+
+This step gives the motivation for analysing successful execution of scripts. IPython scripts contain cells and each of them has a specific output - e.g. numbers, graphs or errors, which is an indicator for correctness of results and quality of repositories. 
+
+--> Mine
+
+\vspace{10mm}

@@ -1,0 +1,77 @@
+To clearly understand the problem that this project is trying to solve, we have to go into detail about the concept of using computational applications. The contribution of the research is to understand the usage of software in science. However, encompasses a wide range of use cases with software used for a variety of purposes. This literature review begins be reviewing existing examples of the use of software in scientific research.
+
+\subsubsection{Contributions and Approaches}
+\label{sec:contributions}
+
+A great deal of researches has been conducted for answering the above questions, which later led to to the idea of observing these investigations in order to assess broadly how software development is practiced in research.
+
+One example for scientifically modeling natural phenomena is the formulation of a snowflake. Norman Packard created the illustration with the use of a program, which demonstrates cellular automation.\cite{wolfram1984computer}\cite{packard1986lattice} The model represents the surface as cells - they have value 0 or 1, which corresponds accordingly to water vapor(black) or to ice(colour). The construction of the model starts with a red cell in the center of the visualisation. Afterwards, it continues by developing series of steps. In order to identify the value of the next cell, the values of the six surrounding cells has to be summed - if it is an odd number, then the cell has to be ice with value 1, if not - the other way around, vapor with value 0. The snowflakes consists of red and blue colours. Its creation requires at least 10,000 calculations. The best possible approach for the accurate and fast generation of the model, was by using computer stimulation. Even if the calculations are simple, the software script helps with the correct build of the pattern.\cite{wolfram1984computer} In figure \ref{fig:snowflake} on page \pageref{fig:snowflake} you can see the snowflake illustration.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.2]{images/snowflake_algorithm}
+\caption{Computer Stimulation: Cellular Automation of a snowflake}
+\label{fig:snowflake}
+\end{figure}
+
+Recording the changes of data in time is crucial for a lot of researches, such as animal tracking data - it gives us information about how individuals and populations migrate from local area, travel across oceans and continents, and develop during centuries. All of this knowledge gain from the analysis, can be a valuable tool for predicting climate changes, biodiversity loss, invasive species, diseases or even important events in the economics. \cite{coyne2005satellite}
+
+Coyne and Godley's paper \cite{coyne2005satellite} presents details about satellite tracking and analysis tool, called STAT. Up until now, Argos systems have been used for recording animal data - \textit{"satellite-based system which collects, processes and disseminates environmental data from fixed and mobile platforms worldwide"}.\cite{argosWiki} Its collected data has a lot of advantages and benefits for journals, but it is not easy to analyze and manipulate by biologists - various of technical skills are required to operate with the given information. The research is demonstrating the STAT system, explaining all of its features - overview of the system, how it handles data management, data filtering and editing, integration of environmental data, and how it influences the education and the public. It is freely available software specifically created for animal tracking biologists in order for them to easily manage, investigate and integrate data. 
+
+Finally, software has an important role in predictions, such as climate change, automation of systems and artificial intelligence. \cite{easterbrook2009engineering}\cite{chasmSoftware} Huge and complex simulations are computed by researchers who have little software skills and are not adapting to new technology fast. A case of such project can be considered for climate scientists - the paper of Steve Easterbrook and Timothy Johns \cite{easterbrook2009engineering}, an ethnographic study of the usage and management of software tools by climate analysts. The research has been conducted at the Met Office Hadley Centre, which 
+is one of the UK's most crucial climate change research centres and it produces essential information for climate changes and science. \cite{metOffice} Steve Easterbrook and Timothy Johns \cite{easterbrook2009engineering} are analysing how scientists are applying the technology in terms of software quality, correctness, managing tasks, testing and collaboration. 
+
+The approach taken in this research consisted of eight-week observational study at the
+Met Office Hadley Centre constructed by ethnographic techniques. In order to determine methods and performances of the climate scientists, investigators have discovered several fundamental properties of assessing the usage of software in the centre:\cite{easterbrook2009engineering}
+
+\begin{itemize}
+\item Correctness - how and what does it mean to the scientists? 
+\item Reproducibility - of experiments and code. 
+\item Shared Understanding - representation and knowledge of the large system. 
+\item Prioritization - of requirements and tasks, which of them are achievable or worth implementing for the research. 
+\item Debugging - catching of errors, failures and bugs.
+\end{itemize}
+
+Furthermore, the paper introduces the modeling that has been used for basic climate computational analysis - General Circulation Models (GCMs), \textit{"which represent the atmosphere and oceans using a 3-dimensional grid and solve the equations for fluid motion to calculate energy transfer between grid points"}. \cite{easterbrook2009engineering} The paper illustrates of the complexity of generating and operating climate data and the value of using software in science. The models require great computer power so they can be analysed and visualised.
+
+The reported findings presents greatly developed and integrated techniques of the climate researchers for maintenance and management of the system and their courses of actions to scientific analysis. The Met Office Center's team are applying software methods, such as the agile approach. Software engineering practices are proved to be of an essential support for conducting a scientific research. Moreover, the Met Office has maintained a software that is greatly accustomed to the data domain that the climate scientists have collected. Issues, such as performance and portability are tested ensuring that the software tools are correctly coordinated with the researchers' practices. The study observes that these procedures are frequently treated as controlled experiments. Also, the field of climate science has invested in technology for efficient and accurate exploration of data, which is an indication that scientists have recognised what benefits can software tools give them. \cite{easterbrook2009engineering}
+
+The above examples illustrate the support that computing can give to analysts when exploring a field of study. From the observed approaches we can derive common properties that each investigator is trying to cover - properties connected with the scientific method, which is \textit{"a body of techniques for investigating phenomena, acquiring new knowledge, or correcting and integrating previous knowledge."}\cite{sciMethod} In the Steve Easterbrook and Timothy Johns's paper \cite{easterbrook2009engineering} the approach is evaluating five main features - correctness, reproducibility, shared understanding, prioritization and debugging. Every scientists considers these properties. Nevertheless, they are not the only one that need detailed attention - the process of the scientific method includes steps that require examination, as well, so that there are no downsides of the implemented software:\cite{sciMethod}\cite{chasmSoftware}
+
+\begin{enumerate}
+\item Formulation of a question - gathering and assessing evidence from experiments, observations and related work of other researchers.
+
+\item Hypothesis - derived from the knowledge that the investigator has about the area of study. An important aspect of the hypothesis is that it has to be falsifiable, which means that it has to lead to predictions of the results that can be experimentally contradicted. 
+
+\item Prediction - determined from the hypothesis. It has to contain logical consequences and be eligible for testing.
+
+\item Testing - hypothesis has to be assessed with a lot of experiments. The experiments has to determine if the made inspections of the real world support or contradict the predictions derived from a hypothesis. Also, the tests must be repeatable, which can be ac hived by well organised documentations and recordings. It is helping with the effective presentation of the hypothesis and the software usage.
+
+\item Analysis - includes analysis over the results of the experiment and decision making for the next operation of the research. The predictions of the hypothesis are compared to those of the null hypothesis, so that it can be established which is better for describing the data. The results have to reproducible by an independent experiment and scientists need to be aware of how they are going to accomplish that. The software tools supports the recreation of the same results and the statistical analysis of the data. If the reproducibility feature is not met, there will be a lot concerns about the validity of the hypothesis. From this, we can derive one more aspect that scientists try to accomplish - clearly identifying the limitations of the results.
+
+\end{enumerate}
+
+The use of software can be both beneficial and an obstacle to these steps. An example of a software defect in scientific analysis is given with the Sanders and Kelly's paper - Sander's \cite{sanders2008dealing}. It is reported that one of the subjects reported results that are completely different outcome of what the software was meant to do. They have several papers, such as Kelly's papers \cite{kellyassessing}\cite{kelly2009five}, which are focusing on the usage of software and the necessity of testing it so that the results will be accurate. 
+
+Furthermore, replication and reproducibility are playing an important role in the usage of software in scientific researches and they are crucial aspects of the scientific method. The following implications apply for them \cite{johansson2014introduction}\cite{peng2011reproducible}\cite{levequereproducible}:
+
+\begin{itemize}
+\item Replication - "An author of a scientific paper that involves numerical calculations should be able to
+rerun the simulations and replicate the results upon request. Other scientist should also be able to
+perform the same calculations and obtain the same results, given the information about the methods
+used in a publication."\cite{johansson2014introduction}
+\item Reproducibility - "The results obtained from numerical simulations should be reproducible with an
+independent implementation of the method, or using a different method altogether."\cite{johansson2014introduction}
+\end{itemize}
+
+In order to succeed with this features, we have to consider:
+
+\begin{itemize}
+\item To keep track and record of the code version that is generating specific data.
+\item To have access to the environment and software that is used.
+\item To save and back up code and documentation for future work.
+\item To publish code online, so that it can gain interest of other scientists in the code and the presented findings. \cite{johansson2014introduction}
+\end{itemize}
+
+
+To sum up, this section is presenting three main features of software usage in science - it can be applied in algorithms and numerical analysis, tracking and recording of data quality and visualizations, and predicting future data. Each of them has presented a description of the conducted researches, approach and outcomes. Software is helpful and effective tool for reaching a successful analysis and unique findings. However, with the powerful applications, comes great responsibility. Maintaining, controlling, debugging and documenting software is a challenging, but necessary task for achieving outstanding results. 
