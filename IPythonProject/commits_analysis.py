@@ -61,6 +61,19 @@ class CommitsAnalysis():
             sum += commits[1]
         average_commit = sum / len(number_of_commits)
 
+    def calculate_average_of_commits(self):
+        """Method for indicating repositories with number of commits less than 10.
+        :return:
+            Number: Integer"""
+
+        number_of_commits = self.get_number_of_commits()
+        inactive_repos = 0
+        for commits in number_of_commits:
+            if commits[1] <= 10:
+                inactive_repos += commits[1]
+
+        return inactive_repos / len(number_of_commits)
+
     def calculate_standard_deviation(self):
         """Method for calculating the standard deviation of all commits.
         :return:
@@ -93,10 +106,12 @@ class CommitsAnalysis():
         plt.plot(bins, y, 'r--')
         plt.xlabel('Number of Commits')
         plt.ylabel('Probability')
+        plt.xlim(0, max(commits_values))
         plt.title(r'Histogram of number of commits')
 
         # Tweak spacing to prevent clipping of ylabel
         plt.subplots_adjust(left=0.15)
+        plt.savefig('commits_histogram.pdf')
         plt.show()
 
     def get_date_of_latest_commit_in_repository(self):
@@ -152,4 +167,4 @@ class CommitsAnalysis():
         return average_of_close_years
 
 commits_analysis = CommitsAnalysis()
-print(commits_analysis.get_number_of_commits())
+print(commits_analysis.create_histogram_for_standard_deviation())
