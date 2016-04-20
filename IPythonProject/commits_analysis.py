@@ -70,7 +70,7 @@ class CommitsAnalysis():
         inactive_repos = 0
         for commits in number_of_commits:
             if commits[1] <= 10:
-                inactive_repos += commits[1]
+                inactive_repos += 1
 
         return inactive_repos / len(number_of_commits)
 
