@@ -19,8 +19,6 @@ There are two aspects that this part of the analysis has to consider for the cor
 
 The approach for completing the first point is investigation over the tests made for each script of a repository. Tests are usually written as unittests, on Python. Investigation over the tests of a project can count how many repositories has some tests implementation and, also, what is the test coverage of the functionality.
 
----> Mine
-
 Description of the conduction and values of the results, is a way to record and present the quality of research. Usually that is achieved by keeping up-to-date README file, usage of easy to understand naming conventions in the code and appropriate amount of comments. The documentation of a project is important not only for quality of the analysis result, but also, for the reproducibility and replication of results - when other software developers or researchers want to use the specific repository, they need to be aware with all features in it. IPython observatory is exploring how many repositories have README file and is investigating how easy are they for understanding by using several algorithms for assessing readability. Future recommendations for analysis include text mining techniques for identifying the content of a document. 
 
 
@@ -88,9 +86,9 @@ For analysing the representation and knowledge of projects, we can connect this 
 \vspace{2mm}
 
 This step consists of organising requirements and tasks and classifying which of them are achievable or worth
-implementing for the project. It motivates the project to prioritize scripts depending on their content - some scripts contain only text, some - only code and others - both. If scripts in a repository are consisting mainly code, this means the project is likely to be a software project. This step is supporting some of the analysis in the previous section\ref{subsec:mining}.
+implementing for the project. It motivates the project to prioritize scripts depending on their content - some scripts contain only text, some - only code and others - both. If scripts in a repository are consisting mainly code, this means the project is likely to be a software project. This step is supporting the analysis in the previous section\ref{subsec:mining} in Aspect \RNum{1}. 
 
---> Mine
+IPython Observatory is investigating the content of each IPython script. They are represented in JSON format\cite{json} and they contain cells with an attribute \textit{"cell\_type"}, which contains the type of a cell, such as code or markdown(text). The prototype calculates the ratios between code and text in all scripts and all repositories - respectively around 64\% and 39\%. 
 
 \vspace{5mm}
 \begin{mdframed}
@@ -103,4 +101,4 @@ This step gives the motivation for analysing successful execution of scripts. IP
 
 --> Mine
 
-\vspace{10mm}
+\vspace{5mm}

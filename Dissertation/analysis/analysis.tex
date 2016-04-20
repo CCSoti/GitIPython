@@ -39,6 +39,8 @@ As described in the Kalliamvako's paper\cite{kalliamvakoupromises}, GitHub is us
 
 The technique used in IPython Observatory for identifying if a repository is a project, is extracting all merges made into the repository. GitPython was used for the process and each merge in the package has a name and a stage, which represents conflicts during the merging. If a stage is zero then there were no conflicts, else - there were conflicts in the merge. Then the prototype is traversing through each merges' stage and calculating the percentage of merges without any conflicts against the number of all merges. However, when the code was executed on the extracted 866 repositories and it returned a value of 1.0, which means that all of the merges in the repositories have no conflicts. The algorithm could be improved and investigated even further as a future task. 
 
+Another technique has been implemented that analyses each of the files in a repository and extracting their names. The extension of the file gives information about the type of the file and the language used in it. In order to identify each possible format, a data set has been created that contains various formats met in GitHub repositories - the python package \textit{linguist}\cite{linguist} contains most of the languages. Another computation in the process is calculating the percentage of repositories that contain only text/plain files and IPython scripts - 4,3786\%. This shows that only a small amount of projects has storage purpose and it states the assumptions that there are not software development projects. This idea can be extended further - e.g. the most used language together with IPython.
+
 \vspace{5mm}
 \begin{mdframed}
 \vspace{1px}
@@ -49,7 +51,16 @@ The technique used in IPython Observatory for identifying if a repository is a p
 
 One of the most crucial features of GitHub repositories are the commits - 20 times more than pull request and issues\cite{kalliamvakoupromises}. Kalliamvako's paper\cite{kalliamvakoupromises} suggests that GitHub repository's activity can be measured with the number of commits and the time of commits, which tracks the lifespan of a project. This will indicate the work done for the project and its usage on GitHub.
 
----> Mine
+The prototype of the research is counting the number of commits of all extracted repositories. GitPython package is allowing the extraction of commits by the creation of a Repository object for a specific project - it requires the path of the repository storage location. 
+
+Several analysis were performed to investigate the activity of projects on GitHub. The first is calculating the average value for a number of commits for a repository. The results show that it is 102.93, which indicates that on average a repository has high number of commits and shows large activity. The second calculation is showing the standard deviation\cite{stdWiki} of the various number of commits - 831.5, which is high and it presents that the data points are spread out over a wide range of values. The prototype generates a histogram of the probability of all the values for number of commits, which can be seen on Figure \ref{fig:histogram}. The values are spreading until value 18,319, but it is showing only until 1000(a histogram spreading until 18,319 is also generated). The figure shows that the probability for the values between 0 and 400 to be number of commits, is the highest from all of the data points - the most common number of commits for IPython repository will be between 0 and 400. As final and third analysis, the prototype finds for every repository the date of the last commit and it looks for repositories that has finished productivity in year 2015 or 2016. This is one more indicator for project's activity. The investigation shows that around 58\% of all the repositories have closed or are still continuing. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{images/commits_histogram_zoomed.pdf}
+\caption{Activity of projects}
+\label{fig:histogram}
+\end{figure}
 
 \vspace{5mm}
 \begin{mdframed}
@@ -59,9 +70,7 @@ One of the most crucial features of GitHub repositories are the commits - 20 tim
 \end{mdframed}
 \vspace{2mm}
 
-This aspect is closely connected with the previous one - Aspect \RNum{2}. It is considered that if a project has a small number of commits, it would have limited functionality and it is inactive. 
-
----> Mine
+This aspect is closely connected with the previous one - Aspect \RNum{2}. It is considered that if a project has a small number of commits, it would have limited functionality and it is inactive. In this part of the analysis the prototype is calculating the number of repositories that has not more than 10 commits - it is a small number for specifying repository's activity and there is no specific reason for its selection. The outcome of the computation is around 48\% of all repositories are assumed to be inactive. However, this process is based on assumptions and it can be extended further. An idea, which can be implemented in the future, is identifying the most appropriate number or model as an indicator of low activity, depending on the variety of commits in a repository. 
 
 \vspace{5mm}
 \begin{mdframed}
@@ -75,9 +84,9 @@ Kalliamvako's survey\cite{kalliamvakoupromises} reports that GitHub repositories
 
 IPython Observatory is is analysing two aspects of a repository in order to identify the usage of IPython - languages used in a repository - types of files and whether a repository has a README file or similar describtion file. One more aspect to be considered for future implementations might be the content of a README file - implementing an algorithm for identifying the aim of the project explained in the README file. 
 
----> Mine
+The research has developed the idea of finding and analysing all of the licenses and README files with the Python package \textit{textstat}\cite{textstat}, which helps with the calculation of statistics from text by deciding readability, complexity and grade level of a particular corpus. Also, the technique of finding the files is based on a data set that contains different formats of the README and license files - e.g. not all of them are text files. The data set is created from manually exploring the most common presentations of the files.
 
-If a repository is used for only storage purposes, it might only has few number of commits and a small lifespan. This contradicts with the statement that we made above - if a project has small amount of commits then it is more likely to be inactive. A future implementation for analysis could be the creation of a model between these two aspects or any other two aspects - Aspect \RNum{3} and Aspect \RNum{4} paragraphs.
+Furthermore, if a repository is used for only storage purposes, it might only has few number of commits and a small lifespan. This contradicts with the statement that we made above - if a project has small amount of commits then it is more likely to be inactive. A future implementation for analysis could be the creation of a model between these two aspects or any other two aspects - Aspect \RNum{3} and Aspect \RNum{4} paragraphs.
 
 
 \vspace{5mm}
@@ -88,10 +97,9 @@ If a repository is used for only storage purposes, it might only has few number 
 \end{mdframed}
 \vspace{2mm}
 
-A GitHub repository might have one or several contributors - it could be used not only for collaboration, but also for personal use, which connects with the idea mentioned in Aspect \RNum{4}, that some projects might be used only for storage. Kalliamvako's survey\cite{kalliamvakoupromises} reports that 38\% out of 240 respondents use GitHub mainly for their own projects and they don't have the intention of collaborating with others. The result are an motivating factor for analysis over the collaboration and social interaction in IPython Notebook's projects. IPython Observatoiry evaluates if a project is
-personal by counting the number of different committers in all the collected repositories.
+A GitHub repository might have one or several contributors - it could be used not only for collaboration, but also for personal use, which connects with the idea mentioned in Aspect \RNum{4}, that some projects might be used only for storage. Kalliamvako's survey\cite{kalliamvakoupromises} reports that 38\% out of 240 respondents use GitHub mainly for their own projects and they don't have the intention of collaborating with others. The result are an motivating factor for analysis over the collaboration and social interaction in IPython Notebook's projects. 
 
-These results indicate --> Mine
+IPython Observatoiry evaluates if a project is personal by counting the number of different committers in all the collected repositories. GitPython implementation has a Commit object, which contains different information for commits, such as author and date. The prototype is extracting all commits and extracting different authors from commits for each repository. Afterwards, its calculating the repositories with only one committer - around 42\% of all repositories, and those with one or two committers - around 63\%. The results show that more than half of the projects are personal. 
 
 Also, the Kalliamvako's survey\cite{kalliamvakoupromises} results show that most of the projects on GitHub are used by only one person, most likely for experimental or storage purposes. An idea for analysis over the relation between the usage of IPython projects for personal use and all repositories on GitHub for personal used, might be implemented as a future improvement.
 
@@ -114,7 +122,7 @@ GitHub allows contributes on a project not only for registered users. Analysis o
 \end{mdframed}
 \vspace{2mm}
 
-Kalliamvako's paper\cite{kalliamvakoupromises} reports that personal projects, which are 67\% from all of the projects, amd they are not using pull requests. This aspect is connected with Aspect \RNum{7} and it could use the same approach for analysis and include one more functionality - number of pull requests, since personal projects should have zero pull requests.
+Kalliamvako's paper\cite{kalliamvakoupromises} reports that personal projects, which are 67\% from all of the projects, and they are not using pull requests. This aspect is connected with Aspect \RNum{7} and it could use the same approach for analysis and include one more functionality - number of pull requests, since personal projects should have zero pull requests.
 
 \vspace{5mm}
 \begin{mdframed}
@@ -124,11 +132,9 @@ Kalliamvako's paper\cite{kalliamvakoupromises} reports that personal projects, w
 \end{mdframed}
 \vspace{2mm}
 
-The peer review model on GitHub has a disadvantage for the project's commits - they might not be readily-observable. This means that usually, all the commits are reviewed and merged within the main repository as one. The GItHub API\cite{gitHubAPI} is recording only the final stage and not all of the original commits. As a consequence, researchers can only observe the latest commit, which is the outcome of the code review process\cite{kalliamvakoupromises}.
+The peer review model on GitHub has a disadvantage for the project's commits - they might not be readily-observable. This means that usually, all the commits are reviewed and merged within the main repository as one. The GitHub API\cite{gitHubAPI} is recording only the final stage and not all of the original commits. As a consequence, researchers can only observe the latest commit, which is the outcome of the code review process\cite{kalliamvakoupromises}.
 
-IPython Observatory is analysing through this aspect of a repository by extracting all merges that are accessible for a repository. It is closely connected with Aspect \RNum{9}.
-
----> Mine
+IPython Observatory is analysing through this aspect of a repository by extracting all merges that are accessible for a repository. It is closely connected with Aspect \RNum{2} and Aspect \RNum{9}. The process, extracting the repositories' merges and their stages(Aspect \RNum{2}), is supporting the investigation for tracking successful code.  
 
 \vspace{5mm}
 \begin{mdframed}
@@ -138,13 +144,13 @@ IPython Observatory is analysing through this aspect of a repository by extracti
 \end{mdframed}
 \vspace{2mm}
 
-Merged pull requests might be merged outside GitHub, as explained in Aspect \RNum{8}. Kalliamvako's paper\cite{kalliamvakoupromises} has developed a heuristics based on conventions advocated by GitHub. Creation of a prototype that implements these heuristics might be considered as a future work and it will contribute to the field of Mining Software Repositories(MSR)\cite{MSR2016}.
+Merged pull requests might be merged outside GitHub, as explained in Aspect \RNum{8}. Kalliamvako's paper\cite{kalliamvakoupromises} has developed a heuristics based on conventions advocated by GitHub. Creation of a prototype that implements these heuristics might be considered as a future work and it will contribute to the field of Mining Software Repositories(MSR) \cite{MSR2016}.
 
 \vspace{8mm}
 
 Aspects \RNum{10}, \RNum{11} are closely connected with Aspect \RNum{6}. IPython Observatory has conducted analysis over number of contributors for a specific project. They can be extended into a lot more complex models and into software tools that implement the models. 
 
-Aspects \RNum{12}, \RNum{13} are specific for the Kalliamvako's paper\cite{kalliamvakoupromises}. They are suggested analysis over the whole information that can extracted from GitHub. With respect to IPython projects, Aspects \RNum{12}, \RNum{13} might be understood as points that are covered in \ref{subsec:limitations}.
+Aspects \RNum{12}, \RNum{13} are specific for the Kalliamvako's paper\cite{kalliamvakoupromises}. They are suggested analysis over the whole information that can extracted from GitHub. With respect to IPython projects, Aspects \RNum{12}, \RNum{13} might be understood as points that are covered in subsection \ref{subsec:limitations}.
 
 
 \input{analysis/scientific_method/main.tex}
