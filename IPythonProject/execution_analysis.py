@@ -1,6 +1,5 @@
 """
-Python class for accessing authors of commits and counting the different authors for a project.
-:result: counting number of different authors of commits.
+Python class for checking for errors in scripts and repositories.
 """
 
 import os
