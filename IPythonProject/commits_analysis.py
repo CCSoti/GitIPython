@@ -61,7 +61,7 @@ class CommitsAnalysis():
             sum += commits[1]
         average_commit = sum / len(number_of_commits)
 
-    def calculate_average_of_commits(self):
+    def calculate_inactivity_of_repos(self):
         """Method for indicating repositories with number of commits less than 10.
         :return:
             Number: Integer"""
