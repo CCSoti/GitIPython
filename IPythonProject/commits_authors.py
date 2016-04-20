@@ -39,5 +39,20 @@ class AuthorsOfCommits():
 
         return number_authors
 
+    def get_personal_projects(self):
+        """Method for getting number of repositories, which have only 1 committer - they are personal projects.
+        :return:
+            Integer : {<repository_name>: <number_of_different_authors>}"""
+
+        number_authors = self.get_number_contributors()
+        personal_repositories = 0
+        for repo in number_authors:
+            repo_number_of_authors = number_authors[repo]
+            if repo_number_of_authors == 1:
+                personal_repositories += 1
+
+        personal_repos_percentage = (personal_repositories/len(number_authors))*100
+        return personal_repos_percentage
+
 authors = AuthorsOfCommits()
-print(authors.get_number_contributors())
+print(authors.get_personal_projects())
