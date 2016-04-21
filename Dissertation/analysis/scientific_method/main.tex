@@ -1,4 +1,5 @@
 \subsection{IPython and the Scientific Method}
+\label{subsect:ipython_sci}
 
 Exploratory analysis in a scientific environment requires a solid interactive environment \cite{ipythonArticle}. IPython has become an effective, easy to use and popular tool for interactions with data. It contains features that are supporting scientists in there researches - e.g. reproducibility and collaboration. 
 
@@ -63,7 +64,7 @@ Iterating through each repository, each script in it and comparing each cell wit
 
 \end{description}
 
-The last three steps are saved into different SQLite\cite{sqlite3} tables. The limitations and issues met with the process are connected with the amount of time for performing the technique over 866 repositories, which are exhausting 19GB of memory. The code was tested on a sample data with - for two repositories, it was executing 29 minutes and 18 second, and for ten repositories - ... ---> Mine. The algorithm will perform on all extracted repositories for 210 hours, which is around 8 days and 7 hours. Considering that we need 8 days for the execution of only one of the three iteration(the last three steps from the list above), it means that we will need 24 days for the three of them. A future development idea is optimisation of the process. 
+The last three steps are saved into different SQLite\cite{sqlite3} tables. The limitations and issues met with the process are connected with the amount of time for performing the technique over 866 repositories, which are exhausting 19GB of memory. The code was tested on a sample data with - for two repositories, it was executing 29 minutes and 18 second. The algorithm will perform on all extracted repositories for 210 hours, which is around 8 days and 7 hours. Considering that we need 8 days for the execution of only one of the three iteration(the last three steps from the list above), it means that we will need 24 days for the three of them. A future development idea is optimisation of the process. 
 
 
 \vspace{5mm}
@@ -88,7 +89,7 @@ For analysing the representation and knowledge of projects, we can connect this 
 This step consists of organising requirements and tasks and classifying which of them are achievable or worth
 implementing for the project. It motivates the project to prioritize scripts depending on their content - some scripts contain only text, some - only code and others - both. If scripts in a repository are consisting mainly code, this means the project is likely to be a software project. This step is supporting the analysis in the previous section\ref{subsec:mining} in Aspect \RNum{1}. 
 
-IPython Observatory is investigating the content of each IPython script. They are represented in JSON format\cite{json} and they contain cells with an attribute \textit{"cell\_type"}, which contains the type of a cell, such as code or markdown(text). The prototype calculates the ratios between code and text in all scripts and all repositories - respectively around 64\% and 39\%. 
+IPython Observatory is investigating the content of each IPython script. They are represented in JSON format\cite{json} and they contain cells with an attribute \textit{"cell\_type"}, which contains the type of a cell, such as code or markdown(text). The prototype calculates the ratios between code and text in all scripts and all repositories - respectively around 64\% and 39\%, by traversing through each script in a repository, summing all of the ratios for all scripts and for scripts in each repository, and dividing the sum by the total number of scripts (for the first calculation) and the number of scripts in each repository(for the second calculation). 
 
 \vspace{5mm}
 \begin{mdframed}
@@ -99,6 +100,6 @@ IPython Observatory is investigating the content of each IPython script. They ar
 
 This step gives the motivation for analysing successful execution of scripts. IPython scripts contain cells and each of them has a specific output - e.g. numbers, graphs or errors, which is an indicator for correctness of results and quality of repositories. 
 
---> Mine
+As mentioned in the previous step (Step 4), each IPython script is presented in JSON format and it contains cells with attributes. The attribute that this step analyses is \textit{"output\_type"}, which are containing all the types of output of cells and they could be "error","pyout", "stream", "pyerr" and others. The algorithm is counting the number of outputs that are of type "error" or "pyerr", and its computing two values: 1) the percentage of scripts with errors in all scripts, 2) the percentage of repositories with at least one script with errors, in all repositories. The results are, respectively, 19.26\% and 20.0\%. This shows that there is amount of scripts with errors and almost all of the these scripts are in different repositories, since the percentages are almost the same. Another idea for investigation is computing the most common error in IPython scripts.
 
-\vspace{5mm}
+% \vspace{5mm}

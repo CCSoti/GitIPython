@@ -11,24 +11,28 @@ Data visualizations are great practice for conducting accurate analysis - they s
 
 This section is explaining how researchers have tried to assess the usage of Python in scientific computing. There are a variety of approaches and methods for determining the easiness of features in Python - the best of them is the practical use of Python in different cases. SciPy conferences subsection is describing the experiences of analysts with Python. 
 
+\vspace{2mm}
 \paragraph{Syntax and structure of Python code} 
 \label{syntax}
+\vspace{3mm}
 
 In this subsection we are mainly going through one article, Oliphant's \cite{oliphant2007python}, from other research documentation. 
 
 High-level languages can enormously increase productivity and that is why they have been used for scientific computing for many years. Countless analysts and researchers have found these language to be of great use for them, since they are facing tasks of implementing nontrivial computational software prototypes in order to prove a concept for their area of exploration. Python is one of these languages and it allows engineers to be more careless with syntax, error handling and compilation time. However, comparing it with other languages, Python presents more effective environment for scientific applications.
 
 Travis Oliphant's article continues by listing the basic features of Python: liberal open source license - allows selling, using, or
-distributing of Python-based applications, Python running on many platforms - no concerns about writing an application with limited portability, the language’s clean syntax - object-oriented coding, depending on the situation, a powerful interactive interpreter - allows code development and experimentation, and others.\cite{oliphant2007python}
+distributing of Python-based applications, Python running on many platforms - no concerns about writing an application with limited portability, the language's clean syntax - object-oriented coding, depending on the situation, a powerful interactive interpreter - allows code development and experimentation, and others.\cite{oliphant2007python}
 
 All of the above features are useful for implementing scientific computations with Python. Travis Oliphant goes into more detail about the clean syntax, useful built-in objects, functions and classes, standard library, ease of extension, and the importance of libraries, such as NumPy and SciPy. With examples, he is able to show that only with a few lines of code, a complex functionality can be implemented, and errors, failures and bugs can be caught. 
 
-The Travis Oliphant's paper\cite{oliphant2007python} provides a "small taste" of Python’s usefulness and he is going through the language itself. The author is supporting the argument that Python is beneficial by starting with the syntax, which makes the code easy to understand and maintain, continuing with more examples for the built-in scalar types and the prepackaging libraries, and ending with SciPy package's calculation and computational ability. The structuring and syntax of the programming scripts is an important part since the concentration of a researcher will be mainly focused on the accuracy of the calculations and the discovery that was made, than in the validity of the code. With Python both features can be complete. 
+The Travis Oliphant's paper\cite{oliphant2007python} provides a "small taste" of Python's usefulness and he is going through the language itself. The author is supporting the argument that Python is beneficial by starting with the syntax, which makes the code easy to understand and maintain, continuing with more examples for the built-in scalar types and the prepackaging libraries, and ending with SciPy package's calculation and computational ability. The structuring and syntax of the programming scripts is an important part since the concentration of a researcher will be mainly focused on the accuracy of the calculations and the discovery that was made, than in the validity of the code. With Python both features can be complete. 
 
 The article argues that Python is clear to read, study and apply in various software applications. However, it is not going through a lot of detail for execution and compilation time \cite{HansPython}. Since Python is an interpreted language, it runs many times slower than compiled code. Then why we should consider using it in scientific complex functions? The next paper reviewed considers of the performance of Python.\ref{performance}
 
+\vspace{2mm}
 \paragraph{Performance of Python}
 \label{performance}
+\vspace{3mm}
 
 Python must be compiled before it is run - it differs from C, C++ and other languages. Python programs are scripts - instead of having compilation process, Python is interpreted line-by-line. The positive side of it is the code flexibility for problem solving. However, if a complex functionality is implemented with Python rather than with some other compiled language, it will run slower. We are returning again to the question - why should we use such a time-consuming programming language in scientific computing? \cite{ScottPython}
 
@@ -44,21 +48,23 @@ Python has been applied in various range of areas, not only in scientific resear
 
 Since, the core of Python is not sufficient for scientific computations with complex and demanding computations, with the creation of NumPy library, array data structures and long nested loops are processed faster and more smooth than before. It, also, includes multi-dimensional array structures with a lot of methods for accessing or changing them. NumPy's features appear to be as a "mirror" of MatLab's ones. 
 
-The paper, also, investigates the capabilities of Python for parallel programming applications \cite{cai2005performance} With a lot of examples given, Python can be used in parallel computations, where the issues of data partitioning and structuring can be handled. It is ”fast enough” for most computational tasks. Its readability and the re-usability of the code hide the fact that Python has reduced speed compared to other languages. 
+The paper, also, investigates the capabilities of Python for parallel programming applications \cite{cai2005performance} With a lot of examples given, Python can be used in parallel computations, where the issues of data partitioning and structuring can be handled. It is "fast enough" for most computational tasks. Its readability and the re-usability of the code hide the fact that Python has reduced speed compared to other languages. 
 
 Python is a compiled language and Xing Caia's paper \cite{cai2005performance} 
 is proving that some programming languages, such as C++ might be more flexible and elegant than Python, but \textit{"...Python is much more convenient, and convenience seems to be a key issue when scientists choose an interpreted scripting language over a compiled language..."} \cite{cai2005performance} The research is evaluating the performance of parallel Python code in a real scientific application, which is compared to C code. The both serial and parallel performances are equal. In terms of efficiency and optimization Python is helpful for mathematical functions.
 
+\vspace{2mm}
 \paragraph{SciPy conferences} 
 \label{SciPy}
+\vspace{3mm}
 
 In the previous section we analyze the usage of Python in scientific computing. But how does researchers and scientists see the Python code? What kind of experience they gain from it? This section is covering several SciPy conferences with real life examples, experiences and opinion of people that are using Python in the field of scientific programming.
 
-For some people, it is not clear why Python has become the language of choice for so many people in scientific computing. Maybe if researchers like Travis Oliphant had decided to use some other language for scientific programming years ago, we’d all be using that language now. Python wasn’t intended to be a scientific programming language. And as Jake VanderPlas points out in his keynote, Python still is not a scientific programming language, but the foundation for a scientific programming stack. Maybe Python’s strength is that it’s not a scientific language. It has drawn more computer scientists to contribute to the core language than it would have if it had been more of a domain-specific language.
+For some people, it is not clear why Python has become the language of choice for so many people in scientific computing. Maybe if researchers like Travis Oliphant had decided to use some other language for scientific programming years ago, we'd all be using that language now. Python wasn't intended to be a scientific programming language. And as Jake VanderPlas points out in his keynote, Python still is not a scientific programming language, but the foundation for a scientific programming stack. Maybe Python's strength is that it's not a scientific language. It has drawn more computer scientists to contribute to the core language than it would have if it had been more of a domain-specific language.
 
 John Cook reported his experience of migrating from Ruby and other scripting languages to Python. As a mathematician, he needed to start doing computational functions. He describes that period of transferring as \textit{"a rude awakening"}.\cite{johnSciPy} As soon as he started programming on Python, he found that the language provides \textit{"a hoard of code"} \cite{johnSciPy}, which includes a lot of libraries for various kind of data analysis. The comparison that he makes between languages, such as MatLab and R, and Python is the best description of the difference between them:
 
-\textit{"I’d rather do mathematics in a general programming language than do general programming in a mathematical language."}
+\textit{"I'd rather do mathematics in a general programming language than do general programming in a mathematical language."}
 
 He is aware that the most acknowledged disadvantage of Python is its lack of speed, but for John Cook finds even harder rewriting code in other language. 
 
